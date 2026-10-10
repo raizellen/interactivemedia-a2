@@ -3,9 +3,11 @@ const express = require('express');
 const app = express();
 
 app.use(express.json());
-app.use(express.static('.'));
+app.use(express.static(__dirname));
 
-const file = 'assets/data.json';
+const path = require('path');
+
+const file = path.join(__dirname, 'assets', 'data.json');
 
 app.get('/answers', (req, res) => {
   res.json(JSON.parse(fs.readFileSync(file, 'utf8')));

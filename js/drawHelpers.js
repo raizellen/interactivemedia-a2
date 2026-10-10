@@ -159,7 +159,7 @@ function drawHelp() {
   rect(590, 130, 640, 180);
   line(595, 135, 635, 175);
   line(635, 135, 595, 175);
-  pop;
+  pop();
 }
 
 function drawPackets(leftOffset, topOffset) {
