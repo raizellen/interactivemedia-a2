@@ -32,12 +32,13 @@ function mouseWheel(event) {
 }
 
 function keyPressed() {
-  if (key === 'a') {
+  if (key === 'a' && inputValue.elt.style.display === 'none') {
     inputValue.show();
     inputValue.elt.focus();
+    return false;
   }
   
-  if (keyCode === ENTER) {
+  if (key === 'Enter') {
     answers.food = inputValue.value();
 
     inputValue.value('');
