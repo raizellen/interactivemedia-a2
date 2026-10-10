@@ -30,3 +30,19 @@ function mouseWheel(event) {
 
   return false; // Prevents the browser window from scrolling
 }
+
+function keyPressed() {
+  if (key === 'a') {
+    inputValue.show();
+    inputValue.elt.focus();
+  }
+  
+  if (keyCode === ENTER) {
+    answers.food = inputValue.value();
+
+    inputValue.value('');
+    inputValue.hide();
+
+    writeAnswers(answers);
+  }
+}

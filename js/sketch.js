@@ -5,8 +5,12 @@ async function setup() {
   baybayinFont = await loadFont("./assets/fonts/baybayin.ttf");
   normalFont = await loadFont("./assets/fonts/myfontV5.ttf");
   
+  answers = await readAnswers();
+
   storeBuffer = createGraphics(700, 700);
   drawGraphics(storeBuffer);
+
+  createInputField();
 }
 
 function draw() {

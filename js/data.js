@@ -12,3 +12,10 @@ async function writeAnswers() {
     body: JSON.stringify(answers)
   });
 }
+
+function createInputField() {
+  inputValue = createInput();
+  inputValue.position(0, 700);
+  inputValue.style('width', '700px');
+  inputValue.hide();
+}

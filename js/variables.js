@@ -12,3 +12,5 @@ var shadeOpacity = 0;
 
 var thickFont;
 var storeBuffer;
+
+var answers = {};
