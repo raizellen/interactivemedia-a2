@@ -1,0 +1,16 @@
+features to add
+click sign to see project details/desc
+click packet to see stat details (like data)
+    probs use txt file then for loop stylse by splitting \n to shorten code
+toggle sounds: tilaok, karaoke, mga marites, walis, children playing
+
+start w mvp then refine details (add more details to make it look more artsy!)
+spinning pendant?
+only inside in buffer so sign can be dynamically modified to hover
+while keeping shadow
+libraries to use: scribble, sound, collide2D
+upload file to visualise?
+
+hover effect currently uses own calculations -- can use collide2D to optimise
+
+potentially preload my data?
