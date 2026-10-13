@@ -29,5 +29,5 @@ function draw() {
   
   if (posterBack) {
     drawHelp();
-  } 
+  }
 }
