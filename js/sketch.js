@@ -23,7 +23,7 @@ function draw() {
   image(storeBuffer, 0, 0);
 
   drawPackets(50, 200);
-  drawScreen();
+  drawShutter();
   drawPoster();
   drawLight();
   

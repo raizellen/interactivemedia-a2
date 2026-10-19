@@ -173,3 +173,73 @@ class Packet {
     }
   }
 }
+
+function drawPackets(leftOffset, topOffset) {
+  var middleGap = 235;
+
+  var packets = [
+    new Packet(
+      "magicSarap",
+      15 + leftOffset,
+      topOffset,
+      color(250, 220, 10),
+      color(250, 200, 20),
+      color(230, 150, 20),
+      5
+    ),
+    new Packet(
+      "milo",
+      75 + leftOffset,
+      topOffset,
+      color(100, 200, 70),
+      color(80, 180, 50),
+      color(70, 150, 30),
+      3
+    ),
+    new Packet(
+      "tang",
+      130 + leftOffset,
+      topOffset,
+      color(230, 100, 130),
+      color(200, 80, 80),
+      color(180, 60, 60),
+      4
+    ),
+    new Packet(
+      "surf",
+      205 + leftOffset + middleGap,
+      topOffset,
+      color(60, 100, 200),
+      color(40, 80, 180),
+      color(30, 70, 160),
+      2
+    ),
+    new Packet(
+      "kopiko",
+      290 + leftOffset + middleGap,
+      topOffset,
+      color(230, 210, 170),
+      color(200, 180, 130),
+      color(180, 160, 110),
+      6
+    ),
+    new Packet(
+      "ovaltine",
+      350 + leftOffset + middleGap,
+      topOffset,
+      color(230, 120, 30),
+      color(200, 90, 0),
+      color(180, 70, 0),
+      4
+    ),
+  ];
+
+  for (var packet of packets) {
+    for (var y = 0; y < packetHeight * packet.amount; y += packetHeight) {
+      var packetData = packet.packetCalculations(y);
+
+      packet.drawBase(packetData);
+      packet.drawLabel(packetData);
+    }
+  }
+}
