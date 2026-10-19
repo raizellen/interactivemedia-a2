@@ -3,18 +3,14 @@ function keyPressed() {
   userStartAudio()
 
   if (key === 'a' && inputValue.elt.style.display === 'none') {
-    inputValue.show();
-    inputValue.elt.focus();
+    currentQuestion = 0;
+    startDataCollection();
     return false;
   }
   
   if (key === 'Enter') {
-    answers.food = inputValue.value();
-
-    inputValue.value('');
-    inputValue.hide();
-
-    writeAnswers(answers);
+    submitDataAnswer();
+    return false;
   }
 
   if (key === 'k'){
@@ -48,7 +44,7 @@ function keyPressed() {
   }
 
   if (key === 's'){
-    sweeping.amp(0.5);
+    sweeping.amp(0.4);
     if (sweeping.isPlaying()){
       sweeping.stop();
     } else {

@@ -1,3 +1,9 @@
 {
-  "food": "test"
+  "food": 6,
+  "travel": 5,
+  "music": 4,
+  "events": 3,
+  "language": 2,
+  "meals": 1,
+  "movies": 1
 }
