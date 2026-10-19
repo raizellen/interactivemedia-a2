@@ -46,17 +46,30 @@ class Button {
   }
 }
 
+var startButton;
 var helpButton;
 var closeHelpButton;
 
 function createButtons() {
+  // button on the starting screen
+  startButton = new Button({
+    x: 215,
+    y: 445,
+    w: 270,
+    h: 70,
+    isActive: () => starting,
+    onPress: () => {
+      starting = false;
+    },
+  });
+
   // help poster
   helpButton = new Button({
     x: 400,
     y: 560,
     w: 150,
     h: 90,
-    isActive: () => !posterBack,
+    isActive: () => !starting && !posterBack,
     onPress: () => {
       // can't start a second flip while one is running
       if (!posterFlipping) {
@@ -71,7 +84,7 @@ function createButtons() {
     y: 130,
     w: 50,
     h: 50,
-    isActive: () => posterBack,
+    isActive: () => !starting && posterBack,
     onPress: () => {
       posterBack = false;
     },

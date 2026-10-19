@@ -3,6 +3,10 @@ function mousePressed() {
 }
 
 function mouseWheel(event) {
+  if (starting) {
+    return false; // stops the page scrolling while on starting screen
+  }
+
   if (event.delta > 0 && closing > 0) {
     closing -= 1;
   } else if (event.delta < 0 && closing < 130){

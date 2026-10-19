@@ -39,9 +39,9 @@ function draw() {
     drawHelp();
   }
 
-  Button.updateCursor();
-
   if (starting){
-    // drawStarting();
+    drawStarting();
   }
+
+  Button.updateCursor();
 }
