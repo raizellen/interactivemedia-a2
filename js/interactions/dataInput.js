@@ -1,30 +1,35 @@
-
 var answers = {};
 var currentQuestion = 0;
 
 var dataQuestions = [
   {
     key: "food",
+    max: 21,
     question: "How many times a week do you eat Filipino food?"
   },
   {
     key: "travel",
+    max: 12,
     question: "How many trips to Filipino-related places per year?"
   },
   {
     key: "music",
+    max: 20,
     question: "How many hours of Filipino music or karaoke per week?"
   },
   {
     key: "events",
+    max: 12,
     question: "How many Filipino cultural events per year?"
   },
   {
     key: "language",
+    max: 100,
     question: "What percentage of your conversations use Filipino or Tagalog? (0-100)"
   },
   {
     key: "movies",
+    max: 12,
     question: "How many Filipino movies do you watch per month?"
   }
 ];

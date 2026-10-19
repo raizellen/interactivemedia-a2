@@ -1,12 +1,12 @@
 class Packet {
-  constructor(type, startX, startY, colourMain, colourShadow, outline, amount) {
+  constructor(type, startX, startY, colourMain, colourShadow, outline, dataKey) {
     this.type = type;
     this.startX = startX;
     this.startY = startY;
     this.colourMain = colourMain;
     this.colourShadow = colourShadow;
     this.outline = outline;
-    this.amount = amount;
+    this.dataKey = dataKey; // which survey answer this packet shows
   }
 
   packetCalculations(y) {
@@ -31,8 +31,11 @@ class Packet {
     };
   }
 
-  numberOfPackets(){
-    // TODO: map data to 0,6
+  // how many packets
+  numberOfPackets() {
+    var question = dataQuestions.find((q) => q.key === this.dataKey);
+    var value = answers[this.dataKey];
+    return round(constrain(map(value, 0, question.max, 0, 6), 0, 6));
   }
 
   isHovering(y) {
@@ -191,7 +194,7 @@ function createPackets(leftOffset, topOffset){
       color(250, 220, 10),
       color(250, 200, 20),
       color(230, 150, 20),
-      5
+      "food"
     ),
     new Packet(
       "milo",
@@ -200,7 +203,7 @@ function createPackets(leftOffset, topOffset){
       color(100, 200, 70),
       color(80, 180, 50),
       color(70, 150, 30),
-      3
+      "travel"
     ),
     new Packet(
       "tang",
@@ -209,7 +212,7 @@ function createPackets(leftOffset, topOffset){
       color(230, 100, 130),
       color(200, 80, 80),
       color(180, 60, 60),
-      4
+      "music"
     ),
     new Packet(
       "surf",
@@ -218,7 +221,7 @@ function createPackets(leftOffset, topOffset){
       color(60, 100, 200),
       color(40, 80, 180),
       color(30, 70, 160),
-      2
+      "events"
     ),
     new Packet(
       "kopiko",
@@ -227,7 +230,7 @@ function createPackets(leftOffset, topOffset){
       color(230, 210, 170),
       color(200, 180, 130),
       color(180, 160, 110),
-      6
+      "language"
     ),
     new Packet(
       "ovaltine",
@@ -236,15 +239,15 @@ function createPackets(leftOffset, topOffset){
       color(230, 120, 30),
       color(200, 90, 0),
       color(180, 70, 0),
-      4
+      "movies"
     ),
   ];
 }
 
 function drawPackets() {
   for (var packet of packets) {
-    // TODO: call numberOfPackets()
-    for (var y = 0; y < packetHeight * packet.amount; y += packetHeight) {
+    var amount = packet.numberOfPackets();
+    for (var y = 0; y < packetHeight * amount; y += packetHeight) {
       var packetData = packet.packetCalculations(y);
 
       packet.drawBase(packetData);
