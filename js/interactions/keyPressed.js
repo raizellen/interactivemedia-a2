@@ -18,6 +18,7 @@ function keyPressed() {
   }
 
   if (key === 'k'){
+    karaoke.amp(0.7);
     if (karaoke.isPlaying()){
       karaoke.stop();
     } else {
@@ -27,6 +28,7 @@ function keyPressed() {
   }
 
   if (key === 'y'){
+    kidsPlaying.amp(0.5);
     if (kidsPlaying.isPlaying()){
       kidsPlaying.stop();
     } else {
@@ -36,6 +38,7 @@ function keyPressed() {
   }
 
   if (key === 'r'){
+    rooster.amp(0.2);
     if (rooster.isPlaying()){
       rooster.stop();
     } else {
@@ -45,6 +48,7 @@ function keyPressed() {
   }
 
   if (key === 's'){
+    sweeping.amp(0.5);
     if (sweeping.isPlaying()){
       sweeping.stop();
     } else {

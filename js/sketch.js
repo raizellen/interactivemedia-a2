@@ -16,6 +16,11 @@ async function setup() {
   drawGraphics(storeBuffer);
 
   createInputField();
+
+  karaoke = await loadSound('assets/sounds/karaoke.mp3');
+  kidsPlaying = await loadSound('assets/sounds/kids-playing.mp3');
+  rooster = await loadSound('assets/sounds/rooster.mp3');
+  sweeping = await loadSound('assets/sounds/sweeping.mp3');
 }
 
 function draw() {
