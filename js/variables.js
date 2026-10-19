@@ -7,8 +7,10 @@ var posterFlipping = false;
 var posterBack = false;
 var posterFlip = 0;
 
-var closing = 1;
+var closing = 129;
 var shadeOpacity = 0;
+
+var starting = true;
 
 var thickFont;
 var storeBuffer;

@@ -5,6 +5,11 @@ async function setup() {
   baybayinFont = await loadFont("./assets/fonts/baybayin.ttf");
   normalFont = await loadFont("./assets/fonts/myfontV5.ttf");
   
+  rectMode(CORNERS);
+  ellipseMode(CORNER);
+  noStroke();
+  textFont(thickFont);
+
   await readAnswers();
 
   storeBuffer = createGraphics(700, 700);
@@ -14,20 +19,19 @@ async function setup() {
 }
 
 function draw() {
-  rectMode(CORNERS);
-  ellipseMode(CORNER);
-  noStroke();
-  textFont(thickFont);
   background(180, 230, 250);
-
   image(storeBuffer, 0, 0);
 
+  drawPackets(50, 200);
   drawScreen();
   drawPoster();
-  drawPackets(50, 200);
-  // drawSurrounds();
+  drawLight();
   
   if (posterBack) {
     drawHelp();
+  }
+
+  if (starting){
+    drawStarting();
   }
 }

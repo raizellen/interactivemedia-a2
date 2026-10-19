@@ -1,3 +1,22 @@
+function drawStarting(){
+  push();
+  fill(0, 100);
+  rect(0,0,700,700);
+  fill(147, 112, 57);
+  rect(90,140,590,540);
+  fill(186, 143, 76);
+  rect(110,160,610,560);
+
+  fill(219, 124, 38);
+  stroke(195, 47, 39);
+  strokeWeight(10);
+  textSize(64);
+  text("SARI-SARI(LI)", 145, 300);
+  textSize(46);
+  text("DATA SELF-PORTRAIT", 140, 380);
+  pop();
+}
+
 function drawScreen(){
   push();
   stroke(0);
@@ -9,7 +28,6 @@ function drawScreen(){
   fill(150,200);
   rect(240,285, 460,285+closing);
   pop();
-  drawLight();
 }
 
 function drawLight(){
@@ -23,10 +41,6 @@ function drawLight(){
     quad(250,75, 300,75, 650, 700, 50, 700); 
   }
   pop();
-}
-
-function drawSurrounds() {
-  // swaying tree
 }
 
 function drawPoster() {

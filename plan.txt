@@ -1,3 +1,10 @@
+project name: sari-sari(li)
+
+make a class for buttons (clickable)
+share hover logic
+
+disable hover feedback when on starting
+
 TO DO
 - click sign to see project details/desc
 - fix input
