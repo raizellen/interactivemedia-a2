@@ -39,6 +39,10 @@ function draw() {
     drawHelp();
   }
 
+  if (signOpen) {
+    drawSignDetails();
+  }
+
   if (starting){
     drawStarting();
   }

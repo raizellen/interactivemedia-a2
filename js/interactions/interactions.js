@@ -1,4 +1,12 @@
 function mousePressed() {
+  // sign details open - a click outside the board closes it, inside does nothing
+  if (signOpen) {
+    if (!collidePointRect(mouseX, mouseY, signPanel.x, signPanel.y, signPanel.w, signPanel.h)) {
+      signOpen = false;
+    }
+    return;
+  }
+
   Button.handlePress();
 }
 

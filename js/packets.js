@@ -38,6 +38,7 @@ class Packet {
   isHovering(y) {
     return (
       !starting &&
+      !signOpen &&
       mouseX > this.startX &&
       mouseX < this.startX + packetWidth &&
       mouseY > this.startY + y &&

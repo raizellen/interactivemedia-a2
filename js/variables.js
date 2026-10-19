@@ -20,5 +20,8 @@ var posterFlipping = false;
 var posterBack = false;
 var posterFlip = 0;
 
+// sign details
+var signOpen = false;
+
 // shutter
 var closing = 129;

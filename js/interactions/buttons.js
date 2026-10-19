@@ -47,6 +47,7 @@ class Button {
 }
 
 var startButton;
+var signButton;
 var helpButton;
 var closeHelpButton;
 
@@ -63,13 +64,25 @@ function createButtons() {
     },
   });
 
+  // store sign - opens the project details
+  signButton = new Button({
+    x: 70,
+    y: 80,
+    w: 500,
+    h: 90,
+    isActive: () => !starting && !posterBack && !signOpen,
+    onPress: () => {
+      signOpen = true;
+    },
+  });
+
   // help poster
   helpButton = new Button({
     x: 400,
     y: 560,
     w: 150,
     h: 90,
-    isActive: () => !starting && !posterBack,
+    isActive: () => !starting && !posterBack && !signOpen,
     onPress: () => {
       // can't start a second flip while one is running
       if (!posterFlipping) {
