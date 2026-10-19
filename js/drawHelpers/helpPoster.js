@@ -1,4 +1,3 @@
-
 function drawHelp() {
   push();
   fill(0, 100);
@@ -27,14 +26,7 @@ function drawHelp() {
   text("Y   Youth", 400, 430);
   text("• Scroll to close the store!", 120, 470);
 
-  var enlarge = 1;
-  if (mouseX > 590 && mouseX < 640 && mouseY > 130 && mouseY < 180) {
-    enlarge = 1.1;
-  }
-
-  translate(615, 155);
-  scale(enlarge);
-  translate(-615, -155);
+  closeHelpButton.applyHover();
 
   stroke(150, 80, 50);
   fill(250, 120, 100);

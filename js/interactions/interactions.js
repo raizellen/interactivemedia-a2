@@ -1,24 +1,5 @@
 function mousePressed() {
-  if (
-    !posterFlipping &&
-    mouseX > 400 &&
-    mouseX < 550 &&
-    mouseY > 560 &&
-    mouseY < 650 &&
-    !posterBack
-  ) {
-    posterFlipping = true;
-  }
-
-  if (
-    posterBack &&
-    mouseX > 590 &&
-    mouseX < 640 &&
-    mouseY > 130 &&
-    mouseY < 180
-  ) {
-    posterBack = false;
-  }
+  Button.handlePress();
 }
 
 function mouseWheel(event) {

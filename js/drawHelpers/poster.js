@@ -13,18 +13,6 @@ function drawPoster() {
   textSize(20);
   text("ᜍᜒᜐᜒᜎ᜔ \nᜎᜓᜁᜐ᜔", 420, 282);
 
-  //hover
-  var enlarge = 1;
-  if (
-    mouseX > 400 &&
-    mouseX < 550 &&
-    mouseY > 560 &&
-    mouseY < 650 &&
-    !posterBack
-  ) {
-    enlarge = 1.1;
-  }
-
   // flip
   if (posterFlipping) {
     posterFlip += 0.08;
@@ -37,8 +25,9 @@ function drawPoster() {
   }
 
   if (!posterBack) {
+    // hover enlarge (shared Button behaviour), then flip around the same centre
+    helpButton.applyHover();
     translate(475, 605);
-    scale(enlarge);
     // flip horizontally
     scale(cos(posterFlip), 1);
     translate(-475, -605);

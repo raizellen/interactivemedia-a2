@@ -1,6 +1,6 @@
 async function setup() {
   createCanvas(700, 700);
-  
+
   thickFont = await loadFont("./assets/fonts/thickFont.ttf");
   baybayinFont = await loadFont("./assets/fonts/baybayin.ttf");
   normalFont = await loadFont("./assets/fonts/myfontV5.ttf");
@@ -12,6 +12,8 @@ async function setup() {
 
   await readAnswers();
   createInputField();
+
+  createButtons();
 
   storeBuffer = createGraphics(700, 700);
   drawGraphics(storeBuffer);
@@ -27,6 +29,7 @@ function draw() {
   background(180, 230, 250);
   image(storeBuffer, 0, 0);
 
+  drawSign();
   drawShutter();
   drawPoster();
   drawPackets();
@@ -35,6 +38,8 @@ function draw() {
   if (posterBack) {
     drawHelp();
   }
+
+  Button.updateCursor();
 
   if (starting){
     // drawStarting();

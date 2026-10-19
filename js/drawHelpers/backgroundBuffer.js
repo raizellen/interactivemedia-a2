@@ -70,20 +70,6 @@ function drawStore(pg) {
   pg.pop();
 }
 
-function drawSign(pg) {
-  pg.push();
-  pg.fill(0, 100); //shadow
-  pg.rect(75, 90, 575, 180);
-
-  pg.fill(250, 210, 190); //bg
-  pg.rect(70, 80, 570, 170);
-
-  pg.fill(0);
-  pg.textSize(55);
-  pg.text("SARI SARI STORE", 100, 140);
-  pg.pop();
-}
-
 function drawInside(pg) {
   pg.push();
   pg.fill(200, 180, 150); // background

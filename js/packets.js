@@ -31,6 +31,10 @@ class Packet {
     };
   }
 
+  numberOfPackets(){
+    // TODO: map data to 0,6
+  }
+
   isHovering(y) {
     return (
       mouseX > this.startX &&
@@ -237,6 +241,7 @@ function createPackets(leftOffset, topOffset){
 
 function drawPackets() {
   for (var packet of packets) {
+    // TODO: call numberOfPackets()
     for (var y = 0; y < packetHeight * packet.amount; y += packetHeight) {
       var packetData = packet.packetCalculations(y);
 
