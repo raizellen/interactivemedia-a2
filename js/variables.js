@@ -14,3 +14,8 @@ var starting = true;
 
 var thickFont;
 var storeBuffer;
+
+var karaoke;
+var sweeping;
+var rooster;
+var kidsPlaying;

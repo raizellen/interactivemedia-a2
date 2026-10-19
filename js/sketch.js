@@ -32,6 +32,6 @@ function draw() {
   }
 
   if (starting){
-    drawStarting();
+    // drawStarting();
   }
 }
