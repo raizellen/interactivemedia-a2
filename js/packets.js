@@ -174,10 +174,10 @@ class Packet {
   }
 }
 
-function drawPackets(leftOffset, topOffset) {
+function createPackets(leftOffset, topOffset){
   var middleGap = 235;
 
-  var packets = [
+  packets = [
     new Packet(
       "magicSarap",
       15 + leftOffset,
@@ -233,7 +233,9 @@ function drawPackets(leftOffset, topOffset) {
       4
     ),
   ];
+}
 
+function drawPackets() {
   for (var packet of packets) {
     for (var y = 0; y < packetHeight * packet.amount; y += packetHeight) {
       var packetData = packet.packetCalculations(y);

@@ -11,11 +11,11 @@ async function setup() {
   textFont(thickFont);
 
   await readAnswers();
+  createInputField();
 
   storeBuffer = createGraphics(700, 700);
   drawGraphics(storeBuffer);
-
-  createInputField();
+  createPackets(50, 200);
 
   karaoke = await loadSound('assets/sounds/karaoke.mp3');
   kidsPlaying = await loadSound('assets/sounds/kids-playing.mp3');
@@ -27,9 +27,9 @@ function draw() {
   background(180, 230, 250);
   image(storeBuffer, 0, 0);
 
-  drawPackets(50, 200);
   drawShutter();
   drawPoster();
+  drawPackets();
   drawLight();
   
   if (posterBack) {

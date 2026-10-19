@@ -3,6 +3,8 @@ var packetHeight = 80;
 var verticalShadowWidth = 8;
 var horizontalShadowHeight = 8;
 
+var packets = [];
+
 var posterFlipping = false;
 var posterBack = false;
 var posterFlip = 0;
