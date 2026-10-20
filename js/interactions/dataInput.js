@@ -25,6 +25,7 @@ var dataQuestions = [
   {
     key: "language",
     max: 100,
+    unit: "%", // shown after the answer on the packet card
     question: "What percentage of your conversations use Filipino or Tagalog? (0-100)"
   },
   {

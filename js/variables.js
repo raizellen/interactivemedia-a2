@@ -14,6 +14,7 @@ var packetHeight = 80;
 var verticalShadowWidth = 8;
 var horizontalShadowHeight = 8;
 var packets = [];
+var selectedPacket = null;
 
 // help poster
 var posterFlipping = false;

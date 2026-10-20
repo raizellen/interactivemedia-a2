@@ -7,6 +7,23 @@ class Packet {
     this.colourShadow = colourShadow;
     this.outline = outline;
     this.dataKey = dataKey; // which survey answer this packet shows
+
+    // hover + click for the bottom packet
+    this.button = new Button({
+      x: startX,
+      y: startY,
+      w: packetWidth,
+      h: packetHeight,
+      isActive: () =>
+        !starting &&
+        !posterBack &&
+        !signOpen &&
+        selectedPacket === null &&
+        this.numberOfPackets() > 0,
+      onPress: () => {
+        selectedPacket = this;
+      },
+    });
   }
 
   packetCalculations(y) {
@@ -15,9 +32,10 @@ class Packet {
     var x = this.startX;
     var top = this.startY + y;
 
-    if (this.isHovering(y)) {
-      w *= 1.1;
-      h *= 1.1;
+    // only the bottom packet enlarges (1.1 when hovered, 1 otherwise)
+    if (this.isBottom(y)) {
+      w *= this.button.scaleAmount;
+      h *= this.button.scaleAmount;
 
       x -= (w - packetWidth) / 2;
       top -= (h - packetHeight) / 2;
@@ -38,15 +56,14 @@ class Packet {
     return round(constrain(map(value, 0, question.max, 0, 6), 0, 6));
   }
 
-  isHovering(y) {
-    return (
-      !starting &&
-      !signOpen &&
-      mouseX > this.startX &&
-      mouseX < this.startX + packetWidth &&
-      mouseY > this.startY + y &&
-      mouseY < this.startY + y + packetHeight
-    );
+  // is the packet at offset y the bottom (last drawn)
+  isBottom(y) {
+    return y === (this.numberOfPackets() - 1) * packetHeight;
+  }
+
+  // number of packets change with data, move the button onto the bottom packet every frame
+  updateButton() {
+    this.button.y = this.startY + (this.numberOfPackets() - 1) * packetHeight;
   }
 
   drawBase(pd) {
@@ -247,6 +264,7 @@ function createPackets(leftOffset, topOffset){
 function drawPackets() {
   for (var packet of packets) {
     var amount = packet.numberOfPackets();
+    packet.updateButton();
     for (var y = 0; y < packetHeight * amount; y += packetHeight) {
       var packetData = packet.packetCalculations(y);
 

@@ -70,7 +70,7 @@ function createButtons() {
     y: 80,
     w: 500,
     h: 90,
-    isActive: () => !starting && !posterBack && !signOpen,
+    isActive: () => !starting && !posterBack && !signOpen && selectedPacket === null,
     onPress: () => {
       signOpen = true;
     },
@@ -82,7 +82,7 @@ function createButtons() {
     y: 560,
     w: 150,
     h: 90,
-    isActive: () => !starting && !posterBack && !signOpen,
+    isActive: () => !starting && !posterBack && !signOpen && selectedPacket === null,
     onPress: () => {
       // can't start a second flip while one is running
       if (!posterFlipping) {

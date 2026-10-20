@@ -7,6 +7,14 @@ function mousePressed() {
     return;
   }
 
+  // packet details open - same idea, click outside the card to close
+  if (selectedPacket) {
+    if (!collidePointRect(mouseX, mouseY, packetPanel.x, packetPanel.y, packetPanel.w, packetPanel.h)) {
+      selectedPacket = null;
+    }
+    return;
+  }
+
   Button.handlePress();
 }
 

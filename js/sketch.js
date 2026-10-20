@@ -43,6 +43,10 @@ function draw() {
     drawSignDetails();
   }
 
+  if (selectedPacket) {
+    drawPacketDetails();
+  }
+
   if (starting){
     drawStarting();
   }

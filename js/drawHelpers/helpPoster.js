@@ -18,7 +18,7 @@ function drawHelp() {
   textFont(normalFont);
   textSize(40);
   text("• Click on the sign to view description", 120, 280);
-  text("• Click on a packet to view details", 120, 320);
+  text("• Click on a bottom packet to view details", 120, 320);
   text("• Toggle sound using the following keys:", 120, 360);
   text("K   Karaoke", 180, 400);
   text("S   Sweeping", 400, 400);
