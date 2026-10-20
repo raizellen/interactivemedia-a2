@@ -1,4 +1,9 @@
 {
+  "name": "interactivemedia-a2",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "express": "^5.3.0"
   }

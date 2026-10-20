@@ -1,9 +1,9 @@
 async function setup() {
   createCanvas(700, 700);
 
-  thickFont = await loadFont("./assets/fonts/thickFont.ttf");
+  thickFont = await loadFont("./assets/fonts/thick.ttf");
   baybayinFont = await loadFont("./assets/fonts/baybayin.ttf");
-  normalFont = await loadFont("./assets/fonts/myfontV5.ttf");
+  normalFont = await loadFont("./assets/fonts/normal.ttf");
   
   rectMode(CORNERS);
   ellipseMode(CORNER);

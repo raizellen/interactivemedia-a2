@@ -15,8 +15,8 @@ var boardPanel = { x: 80, y: 150, w: 540, h: 420 };
 function drawBoardPaper(title) {
   push();
   dimStore(130);
-  drawSignRopes();
-  drawSignboard();
+  drawBoardRopes();
+  drawBoard();
 
   // paper pinned to the board
   noStroke();

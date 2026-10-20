@@ -1,46 +1,47 @@
-<!-- noprotect -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+
     <!-- content delivery network (CDN) network of servers that hosts files online - can load them without storing them -->
     <script src="https://cdn.jsdelivr.net/npm/p5@2.3.2/lib/p5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5.sound@0.4.1/dist/p5.sound.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5.collide2d@0.7.3/p5.collide2d.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8" />
   </head>
 
   <body>
     <main>
     </main>
 
-    <script src="js/variables.js"></script>
-    <script src="js/colours.js"></script>
-  
-    <script src="js/dataQuestions.js"></script>
+    <!-- config -->
+    <script src="js/config/variables.js"></script>
+    <script src="js/config/colours.js"></script>
+    <script src="js/config/dataQuestions.js"></script>
+
+    <!-- interactions -->
     <script src="js/interactions/dataInput.js"></script>
-    <script src="js/interactions/interactions.js"></script>
+    <script src="js/interactions/mouse.js"></script>
+    <script src="js/interactions/keyboard.js"></script>
     <script src="js/interactions/buttons.js"></script>
     <script src="js/interactions/dialogue.js"></script>
     <script src="js/interactions/tinderaMovement.js"></script>
-    <script src="js/interactions/keyPressed.js"></script>
 
-    <script src="js/packets.js"></script>
-
-    <script src="js/drawHelpers/insideBuffer.js"></script>
-    <script src="js/drawHelpers/outsideBuffer.js"></script>
-    <script src="js/drawHelpers/tindera.js"></script>
-    <script src="js/drawHelpers/dialogueBox.js"></script>
-    <script src="js/drawHelpers/overlays.js"></script>
-    <script src="js/drawHelpers/signBoard.js"></script>
-    <script src="js/drawHelpers/sign.js"></script>
-    <script src="js/drawHelpers/packetLabels.js"></script>
-    <script src="js/drawHelpers/packetDetails.js"></script>
-    <script src="js/drawHelpers/helpPoster.js"></script>
-    <script src="js/drawHelpers/poster.js"></script>
-    <script src="js/drawHelpers/shutter.js"></script>
-    <script src="js/drawHelpers/startingScreen.js"></script>
+    <!-- drawing -->
+    <script src="js/drawing/insideBuffer.js"></script>
+    <script src="js/drawing/outsideBuffer.js"></script>
+    <script src="js/drawing/tindera.js"></script>
+    <script src="js/drawing/dialogueBox.js"></script>
+    <script src="js/drawing/overlays.js"></script>
+    <script src="js/drawing/board.js"></script>
+    <script src="js/drawing/sign.js"></script>
+    <script src="js/drawing/namePoster.js"></script>
+    <script src="js/drawing/helpPoster.js"></script>
+    <script src="js/drawing/packets.js"></script>
+    <script src="js/drawing/packetLabels.js"></script>
+    <script src="js/drawing/packetDetails.js"></script>
+    <script src="js/drawing/shutter.js"></script>
+    <script src="js/drawing/startingScreen.js"></script>
 
     <script src="js/sketch.js"></script>
   </body>

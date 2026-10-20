@@ -2,8 +2,8 @@ function drawStarting() {
   dimStore(120);
 
   push();
-  drawSignRopes();
-  drawSignboard();
+  drawBoardRopes();
+  drawBoard();
   drawFlags();
   drawStartTitle();
   pop();

@@ -15,7 +15,7 @@ css styling as drawing on canvas is limited, css allows:
 */
 @font-face {
   font-family: "SariFont";
-  src: url("assets/fonts/myfontV5.ttf");
+  src: url("assets/fonts/normal.ttf");
 }
 
 /* the answer box */

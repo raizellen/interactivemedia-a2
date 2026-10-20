@@ -1,4 +1,4 @@
-function drawSignRopes() {
+function drawBoardRopes() {
   push();
   stroke(110, 80, 45);
   strokeWeight(5);
@@ -13,7 +13,7 @@ function drawSignRopes() {
   pop();
 }
 
-function drawSignboard() {
+function drawBoard() {
   push();
 
   // outer frame
