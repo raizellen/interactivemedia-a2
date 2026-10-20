@@ -32,7 +32,7 @@ function typingDone() {
 
 // call once per frame
 function updateDialogue() {
-  if (dialoguePhase === "idle" && closing === 0 && tinderaAtWindow()) {
+  if (dialoguePhase === "idle" && shutterProgress === 0 && tinderaAtWindow()) {
     goToStep(0);
   }
 
@@ -93,7 +93,7 @@ function endConversation() {
 }
 
 function replayQuestions() {
-  if (dialoguePhase !== "done" || closing !== 0 || !tinderaAtWindow()) {
+  if (dialoguePhase !== "done" || shutterProgress !== 0 || !tinderaAtWindow()) {
     return;
   }
 

@@ -65,7 +65,7 @@ function draw() {
     drawPacketDetails();
   }
 
-  if (starting){
+  if (onStartScreen){
     drawStarting();
   }
 

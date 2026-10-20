@@ -1,5 +1,6 @@
 // the art on each packet, pd = where and how big the packet is drawn (from packetCalculations)
 function drawPacketLabel(type, pd) {
+  push(); // so the bold below doesn't carry over to other text
   textStyle(BOLD);
   var textX = pd.x + pd.w/2 + 3;
 
@@ -109,4 +110,5 @@ function drawPacketLabel(type, pd) {
       noStroke();
       break;
   }
+  pop();
 }

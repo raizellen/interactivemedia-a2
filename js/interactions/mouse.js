@@ -38,17 +38,17 @@ function mousePressed() {
 }
 
 function mouseWheel(event) {
-  if (starting || conversationActive()) {
+  if (onStartScreen || conversationActive()) {
     return false;
   }
 
   // remember which way the shutter is going
   shutterDirection = event.delta > 0 ? "opening" : "closing";
 
-  if (event.delta > 0 && closing > 0) {
-    closing -= 1;
-  } else if (event.delta < 0 && closing < 130){
-    closing += 1;
+  if (event.delta > 0 && shutterProgress > 0) {
+    shutterProgress -= 1;
+  } else if (event.delta < 0 && shutterProgress < 130){
+    shutterProgress += 1;
   }
 
   return false; // Prevents the browser window from scrolling

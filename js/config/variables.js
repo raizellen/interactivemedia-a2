@@ -1,7 +1,12 @@
-// starter
-var starting = true;
+// start screen
+var onStartScreen = true;
 var outsideBuffer;
 var insideBuffer;
+
+// fonts
+var thickFont;
+var baybayinFont;
+var normalFont;
 
 // sounds
 var karaoke;
@@ -26,5 +31,5 @@ var signOpen = false;
 var namePosterOpen = false;
 
 // shutter
-var closing = 129;
+var shutterProgress = 129; // 0 = open, 130 = fully closed
 var shutterDirection = "closing"; // "opening" or "closing", set by the mouse wheel

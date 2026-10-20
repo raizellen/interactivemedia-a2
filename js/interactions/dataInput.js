@@ -1,4 +1,5 @@
 var answers = {};
+var inputValue; // the answer box
 var currentQuestion = 0;
 var submitting = false;
 

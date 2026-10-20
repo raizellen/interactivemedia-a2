@@ -66,7 +66,7 @@ var submitButton;
 
 // nothing is covering the store, so the sign, posters and packets can be clicked
 function storeIsClickable() {
-  return !starting && !helpOpen && !signOpen && !namePosterOpen && selectedPacket === null && !conversationActive();
+  return !onStartScreen && !helpOpen && !signOpen && !namePosterOpen && selectedPacket === null && !conversationActive();
 }
 
 // make buttons in the same order things are drawn, the one made last is on top
@@ -77,9 +77,9 @@ function createButtons() {
     y: 445,
     w: 270,
     h: 70,
-    isActive: () => starting,
+    isActive: () => onStartScreen,
     onPress: () => {
-      starting = false;
+      onStartScreen = false;
     },
   });
 
@@ -125,7 +125,7 @@ function createButtons() {
     y: 120,
     w: 50,
     h: 50,
-    isActive: () => !starting && helpOpen,
+    isActive: () => !onStartScreen && helpOpen,
     onPress: () => {
       helpOpen = false;
     },

@@ -15,6 +15,11 @@ function drawTindera() {
   fill(40, 25, 20);
   ellipse(0, 6, 62, 70);
 
+  // bun
+  stroke(60, 30, 20);
+  strokeWeight(2);
+  ellipse(0, -34, 24, 22);
+
   // neck
   fill(222, 170, 130);
   rect(0, 30, 16, 14);
@@ -28,10 +33,6 @@ function drawTindera() {
   fill(40, 25, 20);
   arc(0, -3, 54, 52, PI, TWO_PI);
 
-  // bun
-  stroke(60, 30, 20);
-  strokeWeight(2);
-  ellipse(0, -34, 24, 22);
 
   // eyes, blinking now and then
   if (frameCount % 220 < 6) { // blink for 6 frames every 220
