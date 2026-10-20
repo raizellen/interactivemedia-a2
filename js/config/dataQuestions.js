@@ -2,25 +2,25 @@
 var dataQuestions = [
   {
     key: "food",
-    max: 30,
+    max: 21,
     unit: "meals/week",
     question: "How many times a week do you eat Filipino food?"
   },
   {
     key: "travel",
-    max: 30,
+    max: 12,
     unit: "times/year",
     question: "How many trips to Filipino-related places per year?"
   },
   {
     key: "music",
-    max: 50,
+    max: 30,
     unit: "hours/week",
     question: "How many hours of Filipino music or karaoke per week?"
   },
   {
     key: "events",
-    max: 30,
+    max: 24,
     unit: "events/year",
     question: "How many Filipino cultural events per year?"
   },
@@ -32,7 +32,7 @@ var dataQuestions = [
   },
   {
     key: "movies",
-    max: 30,
+    max: 12,
     unit: "movies/month",
     question: "How many Filipino movies do you watch per month?"
   }

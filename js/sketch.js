@@ -10,6 +10,7 @@ async function setup() {
   noStroke();
   textFont(thickFont);
   textAlign(CENTER);
+  textStyle(BOLD);
 
   await readAnswers();
   createInputField();

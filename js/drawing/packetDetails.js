@@ -1,15 +1,6 @@
 // card shown when a packet is clicked, clicking outside it closes it
 var packetPanel = { x: 100, y: 190, w: 500, h: 320 };
 
-var packetNames = {
-  magicSarap: "MAGIC SARAP",
-  milo: "MILO",
-  tang: "TANG POMELO",
-  surf: "SURF EXCEL",
-  kopiko: "KOPIKO BLANCA",
-  ovaltine: "OVALTINE",
-};
-
 function drawPacketDetails() {
   var packet = selectedPacket;
   var question = packet.question;
@@ -43,7 +34,7 @@ function drawPacketDetails() {
   fill(...palette.red);
   textFont(thickFont);
   textSize(30);
-  text(packetNames[packet.type], 280, 240);
+  text(question.key.toUpperCase(), 280, 240);
 
   stroke(...palette.red, 150);
   strokeWeight(2);
@@ -53,20 +44,20 @@ function drawPacketDetails() {
   noStroke();
   fill(...palette.textBrown);
   textFont(normalFont);
-  textSize(22);
+  textSize(32);
   text(question.question, 280, 266, 575, 350);
 
   // answer
   fill(...palette.hintBrown);
-  textSize(20);
-  text("your answer", 280, 375);
+  textSize(28);
+  text("your answer", 280, 390);
 
   fill(...palette.orange);
   stroke(...palette.red);
   strokeWeight(4);
   textFont(thickFont);
-  textSize(52);
-  var shown = value === undefined ? "-" : value + (question.unit || "");
+  textSize(42);
+  var shown = value + " " + (question.unit || "");
   text(shown, 280, 435);
 
   // hint
