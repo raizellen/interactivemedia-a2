@@ -3,6 +3,7 @@ function drawPoster() {
 
   // name poster
   push();
+    posterButton.applyHover();
     noStroke();
     fill(0, 65);
     rect(405, 265, 500, 330);
@@ -37,51 +38,112 @@ function drawPoster() {
   }
 
   if (!posterBack) {
+    var x1 = helpButton.x;
+    var y1 = helpButton.y;
+    var x2 = x1 + helpButton.w;
+    var y2 = y1 + helpButton.h;
+    var centerX = x1 + helpButton.w / 2;
+    var centerY = y1 + helpButton.h / 2;
+
     // hover enlarge (shared Button behaviour), then flip around the same centre
     helpButton.applyHover();
-    translate(475, 605);
+    translate(centerX, centerY);
     // flip horizontally
     scale(cos(posterFlip), 1);
-    translate(-475, -605);
+    translate(-centerX, -centerY);
 
     // front poster
     fill(0, 100);
-    rect(403, 563, 553, 653);
+    rect(x1 + 3, y1 + 3, x2 + 3, y2 + 3);
 
     stroke(100, 30, 30);
     fill(200, 100, 100);
-    rect(400, 560, 550, 650);
+    rect(x1, y1, x2, y2);
 
     noStroke();
 
     fill(100, 120, 200);
-    quad(550, 560, 550, 650, 440, 650, 500, 560);
+    quad(x2, y1, x2, y2, x1 + helpButton.w * 0.27, y2, centerX + helpButton.w * 0.17, y1);
 
     fill(230);
-    rect(401, 590, 440, 630);
-    rect(460, 580, 530, 630, 4);
+    rect(x1 + 1, y1 + 30, x1 + 40, y1 + 70);
+    rect(x1 + 60, y1 + 20, x1 + 130, y1 + 70, 4);
 
     // R logo
     stroke(150,100,100);
     strokeWeight(2);
-    rect(408,600,428,610,4);
+    rect(x1 + 8, y1 + 40, x1 + 28, y1 + 50, 4);
     fill(150,100,100);
-    rect(408,600,413,620);
-    line(413,620,425,620);
-    line(434,620,434,610);
-    line(413,610,434,620);
+    rect(x1 + 8, y1 + 40, x1 + 13, y1 + 60);
+    line(x1 + 13, y1 + 60, x1 + 25, y1 + 60);
+    line(x1 + 34, y1 + 60, x1 + 34, y1 + 50);
+    line(x1 + 13, y1 + 50, x1 + 34, y1 + 60);
 
     stroke(0);
     fill(255);
     textSize(15);
-    text("₱715", 530, 575);
+    text("₱715", x1 + 130, y1 + 15);
 
     fill(220, 180, 60);
-    text("TEXT 31080", 475, 643);
+    text("TEXT 31080", centerX, y2 - 7);
 
     fill(40, 70, 150);
     textSize(25);
-    text("?HELP", 495, 610);
+    text("?HELP", centerX + 20, centerY + 5);
   }
+  pop();
+}
+
+var posterPanel = { x: 80, y: 150, w: 540, h: 420 };
+
+function drawPosterDetails(){
+  push();
+
+  // dim the store behind
+  noStroke();
+  fill(0, 130);
+  rect(0, 0, 700, 700);
+
+  drawSignRopes();
+  drawSignboard();
+
+  // paper pinned to the board
+  noStroke();
+  fill(0, 70);
+  rect(128, 198, 578, 538); // shadow
+  stroke(200, 185, 150);
+  strokeWeight(2);
+  fill(250, 242, 215);
+  rect(122, 192, 572, 532);
+
+  drawTape(160, 194, -0.35);
+  drawTape(534, 194, 0.35);
+
+  textAlign(CENTER);
+  noStroke();
+  fill(195, 47, 39);
+  textSize(34);
+  text("LITTLE EASTER EGGS", 347, 252);
+
+  // divider
+  stroke(195, 47, 39, 150);
+  strokeWeight(2);
+  line(160, 270, 534, 270);
+
+  noStroke();
+  fill(70, 40, 20);
+  textFont(normalFont);
+  textAlign(LEFT);
+  textSize(26);
+  text("• This poster is my name in Baybayin!", 150, 290);
+  text("• This text is a custom font I made :)", 150, 320);
+  text("• The help poster has a monogram of my initials", 150, 350);
+  text("• The help poster also has my birthday and the subject code", 150, 380);
+
+  // hint
+  textAlign(CENTER);
+  textSize(20);
+  fill(150, 110, 70);
+  text("click outside the sign to close", 347, 521);
   pop();
 }

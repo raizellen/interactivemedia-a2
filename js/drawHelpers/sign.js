@@ -2,23 +2,28 @@ function drawSign() {
   push();
   signButton.applyHover();
 
+  var x = signButton.x;
+  var y = signButton.y;
+  var w = signButton.w;
+  var h = signButton.h;
+
   fill(0, 100); //shadow
-  rect(75, 90, 575, 180);
+  rect(x + 5, y + 10, x + w + 5, y + h + 10);
 
   fill(242, 112, 89); // border
-  rect(70, 80, 570, 170);
+  rect(x, y, x + w, y + h);
 
   fill(247, 157, 101); //bg
-  rect(75, 85, 565, 165);
+  rect(x + 5, y + 5, x + w - 5, y + h - 5);
 
   fill(247, 178, 103);
-  quad(75,85,325,85,565,165,315,165);
+  quad(x + 5, y + 5, x + w / 2, y + 5, x + w - 5, y + h - 5, x + w / 2 - 10, y + h - 5);
 
   fill(195, 47, 39);
   stroke(98, 23, 8);
   strokeWeight(5);
-  textSize(55);
-  text("SARI-SARI STORE", 320, 140);
+  textSize(h * 0.61);
+  text("SARI-SARI STORE", x + w / 2, y + h * 2 / 3);
   pop();
 }
 

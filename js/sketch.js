@@ -54,6 +54,10 @@ function draw() {
     drawSignDetails();
   }
 
+  if (posterOpen) {
+    drawPosterDetails();
+  }
+
   if (selectedPacket) {
     drawPacketDetails();
   }

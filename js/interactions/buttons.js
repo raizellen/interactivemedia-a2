@@ -48,6 +48,7 @@ class Button {
 
 var startButton;
 var signButton;
+var posterButton;
 var helpButton;
 var closeHelpButton;
 var replyButton;
@@ -72,9 +73,21 @@ function createButtons() {
     y: 80,
     w: 500,
     h: 90,
-    isActive: () => !starting && !posterBack && !signOpen && selectedPacket === null && !conversationActive(),
+    isActive: () => !starting && !posterBack && !signOpen && !posterOpen && selectedPacket === null && !conversationActive(),
     onPress: () => {
       signOpen = true;
+    },
+  });
+
+  // poster button
+  posterButton = new Button({
+    x: 400,
+    y: 260,
+    w: 95,
+    h: 65,
+    isActive: () => !starting && !posterBack && !signOpen && !posterOpen && selectedPacket === null && !conversationActive(),
+    onPress: () => {
+      posterOpen = true;
     },
   });
 
@@ -84,7 +97,7 @@ function createButtons() {
     y: 560,
     w: 150,
     h: 90,
-    isActive: () => !starting && !posterBack && !signOpen && selectedPacket === null && !conversationActive(),
+    isActive: () => !starting && !posterBack && !signOpen && !posterOpen && selectedPacket === null && !conversationActive(),
     onPress: () => {
       // can't start a second flip while one is running
       if (!posterFlipping) {

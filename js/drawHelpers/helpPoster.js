@@ -106,11 +106,15 @@ function drawHelp() {
 
   // close button
   closeHelpButton.applyHover();
+  var closeX = closeHelpButton.x;
+  var closeY = closeHelpButton.y;
+  var closeRight = closeX + closeHelpButton.w;
+  var closeBottom = closeY + closeHelpButton.h;
   stroke(150, 80, 50);
   strokeWeight(5);
   fill(250, 120, 100);
-  rect(595, 120, 645, 170);
-  line(605, 130, 635, 160);
-  line(635, 130, 605, 160);
+  rect(closeX, closeY, closeRight, closeBottom);
+  line(closeX + 10, closeY + 10, closeRight - 10, closeBottom - 10);
+  line(closeRight - 10, closeY + 10, closeX + 10, closeBottom - 10);
   pop();
 }

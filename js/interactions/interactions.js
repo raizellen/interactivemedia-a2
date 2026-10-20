@@ -15,6 +15,14 @@ function mousePressed() {
     return;
   }
 
+  // poster details open
+  if (posterOpen) {
+    if (!collidePointRect(mouseX, mouseY, posterPanel.x, posterPanel.y, posterPanel.w, posterPanel.h)) {
+      posterOpen = false;
+    }
+    return;
+  }
+
   // conversation on - clicks go to the dialogue
   if (conversationActive()) {
     clickDialogue();
