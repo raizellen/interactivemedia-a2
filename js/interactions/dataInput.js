@@ -55,7 +55,7 @@ async function writeAnswers() {
 function createInputField() {
   inputValue = createInput();
   inputValue.addClass('tindera-input'); // styling in style.css
-  inputValue.position(dialogueBox.x + 25, dialogueBox.y + 119); // sits inside the dialogue box
+  inputValue.position(85, 500); // sits inside the dialogue box
   inputValue.attribute('type', 'number'); // automatically adds up down arrows (stepper) in chrome, safari and edge
   inputValue.attribute('min', '0');
   inputValue.attribute('placeholder', 'type a number, then press Enter');

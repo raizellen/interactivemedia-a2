@@ -1,5 +1,3 @@
-var dialogueBox = { x: 60, y: 520, w: 580, h: 160 }; // values needed to position input field
-
 function drawDialogue() {
   drawReplyChip();
 
@@ -54,8 +52,7 @@ function drawReplyChip() {
 }
 
 function drawDialogueBox() {
-  var b = dialogueBox;
-  var tailX = 250;
+  var b = { x: 60, y: 420, w: 580, h: 130 };
 
   push();
 
@@ -73,23 +70,23 @@ function drawDialogueBox() {
   // tail pointing up towards the window
   noStroke();
   fill(250, 242, 215);
-  triangle(tailX - 14, b.y + 2, tailX + 14, b.y + 2, tailX - 6, b.y - 24);
+  triangle(260, b.y + 2, 300, b.y + 2, 320, b.y - 24);
   stroke(110, 70, 35);
   strokeWeight(4);
-  line(tailX - 14, b.y, tailX - 6, b.y - 24);
-  line(tailX + 14, b.y, tailX - 6, b.y - 24);
+  line(260, b.y, 320, b.y - 24);
+  line(300, b.y, 320, b.y - 24);
 
   // name tab
   stroke(110, 25, 20);
   strokeWeight(3);
   fill(195, 47, 39);
-  rect(b.x + 24, b.y - 20, b.x + 150, b.y + 4, 8);
+  rect(b.x + 24, b.y - 10, b.x + 150, b.y + 14, 8);
   noStroke();
   fill(250, 235, 200);
   textFont(thickFont);
   textSize(16);
   textAlign(CENTER, CENTER);
-  text("TINDERA", b.x + 87, b.y - 8);
+  text("TINDERA", b.x + 87, b.y + 2);
 
   // typed out letter by letter
   textFont(normalFont);
@@ -106,9 +103,9 @@ function drawDialogueBox() {
 
   // show alert
   if (dialoguePhase === "asking" && inputNotice !== "") {
-    textSize(26);
+    textSize(24);
     fill(195, 47, 39);
-    text(inputNotice, b.x + 25, b.y + 80);
+    text(inputNotice, b.x + 25, b.y + 50);
   }
 
   // bouncing arrow = click to carry on

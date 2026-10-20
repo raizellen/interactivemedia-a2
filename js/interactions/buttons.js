@@ -107,9 +107,9 @@ function createButtons() {
 
   // player's reply in the conversation
   replyButton = new Button({
-    x: 300,
-    y: 452,
-    w: 340,
+    x: 225,
+    y: 575,
+    w: 250,
     h: 54,
     isActive: () => dialoguePhase === "reply",
     onPress: () => {
@@ -120,7 +120,7 @@ function createButtons() {
   // next to the input, same as pressing enter
   submitButton = new Button({
     x: 520,
-    y: 639,
+    y: 500,
     w: 95,
     h: 34,
     isActive: () => dialoguePhase === "asking" && inputShown,
