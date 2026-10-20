@@ -93,8 +93,8 @@ function createButtons() {
 
   // close button on the help poster
   closeHelpButton = new Button({
-    x: 590,
-    y: 130,
+    x: 595,
+    y: 120,
     w: 50,
     h: 50,
     isActive: () => !starting && posterBack,

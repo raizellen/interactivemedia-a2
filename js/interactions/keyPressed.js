@@ -44,7 +44,7 @@ function keyPressed() {
   }
 
   if (key === 's'){
-    sweeping.amp(0.4);
+    sweeping.amp(0.3);
     if (sweeping.isPlaying()){
       sweeping.stop();
     } else {

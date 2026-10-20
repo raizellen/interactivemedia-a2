@@ -2,16 +2,28 @@ function drawPoster() {
   push();
 
   // name poster
-  fill(0, 100);
-  rect(405, 265, 495, 325);
-  stroke(80, 30, 30);
-  fill(200, 200, 150);
-  rect(400, 260, 490, 320);
+  push();
+    noStroke();
+    fill(0, 65);
+    rect(405, 265, 500, 330);
 
-  noStroke();
-  fill(100, 50, 50);
-  textSize(20);
-  text("ᜍᜒᜐᜒᜎ᜔\nᜎᜓᜁᜐ᜔", 450, 282);
+    stroke(80, 40, 35);
+    strokeWeight(2);
+    fill(120, 65, 45);
+    rect(400, 260, 495, 325);
+
+    noStroke();
+    fill(225, 175, 90);
+    rect(405, 265, 490, 320);
+
+    fill(255, 235, 190);
+    rect(409, 269, 486, 316);
+
+    fill(100, 45, 40);
+    textFont(baybayinFont);
+    textSize(16);
+    text("ᜍᜒᜐᜒᜎ᜔\nᜎᜓᜁᜐ᜔", 447, 288);
+  pop();
 
   // flip
   if (posterFlipping) {

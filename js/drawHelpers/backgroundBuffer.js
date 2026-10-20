@@ -44,7 +44,6 @@ function drawStore(pg) {
 
   drawNet(pg);
   drawFrame(pg);
-  drawSign(pg);
   drawShadows(pg);
   drawRoof(pg);
 
