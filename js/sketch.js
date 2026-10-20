@@ -16,8 +16,10 @@ async function setup() {
 
   createButtons();
 
-  storeBuffer = createGraphics(700, 700);
-  drawGraphics(storeBuffer);
+  insideBuffer = createGraphics(700, 700);
+  outsideBuffer = createGraphics(700, 700);
+  drawInside(insideBuffer);
+  drawOutside(outsideBuffer);
   createPackets(50, 200);
 
   karaoke = await loadSound('assets/sounds/karaoke.mp3');
@@ -28,7 +30,8 @@ async function setup() {
 
 function draw() {
   background(180, 230, 250);
-  image(storeBuffer, 0, 0);
+  image(insideBuffer, 0, 0);
+  image(outsideBuffer, 0, 0);
 
   drawSign();
   drawShutter();

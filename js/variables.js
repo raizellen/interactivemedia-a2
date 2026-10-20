@@ -1,6 +1,7 @@
 // starter
 var starting = true;
-var storeBuffer;
+var outsideBuffer;
+var insideBuffer;
 
 // sounds
 var karaoke;
