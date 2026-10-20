@@ -42,6 +42,7 @@ function draw() {
   drawNamePoster();
   updateHelpPoster();
   drawHelpPoster();
+  updatePackets();
   drawPackets();
   drawLight();
 

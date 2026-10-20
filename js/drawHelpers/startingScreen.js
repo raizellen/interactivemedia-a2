@@ -1,11 +1,7 @@
 function drawStarting() {
+  dimStore(120);
+
   push();
-
-  // dim the store behind
-  noStroke();
-  fill(0, 120);
-  rect(0, 0, 700, 700);
-
   drawSignRopes();
   drawSignboard();
   drawFlags();

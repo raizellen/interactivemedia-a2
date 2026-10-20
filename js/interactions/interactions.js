@@ -1,7 +1,12 @@
+// true when the click is outside the panel
+function clickedOutside(panel) {
+  return !collidePointRect(mouseX, mouseY, panel.x, panel.y, panel.w, panel.h);
+}
+
 function mousePressed() {
-  // sign details open - a click outside the board closes it, inside does nothing
+  // details open - a click outside the board closes it, inside does nothing
   if (signOpen) {
-    if (!collidePointRect(mouseX, mouseY, signPanel.x, signPanel.y, signPanel.w, signPanel.h)) {
+    if (clickedOutside(boardPanel)) {
       signOpen = false;
     }
     return;
@@ -9,15 +14,15 @@ function mousePressed() {
 
   // packet details open - same idea, click outside the card to close
   if (selectedPacket) {
-    if (!collidePointRect(mouseX, mouseY, packetPanel.x, packetPanel.y, packetPanel.w, packetPanel.h)) {
+    if (clickedOutside(packetPanel)) {
       selectedPacket = null;
     }
     return;
   }
 
-  // poster details open
+  // name poster details open
   if (namePosterOpen) {
-    if (!collidePointRect(mouseX, mouseY, namePosterPanel.x, namePosterPanel.y, namePosterPanel.w, namePosterPanel.h)) {
+    if (clickedOutside(boardPanel)) {
       namePosterOpen = false;
     }
     return;

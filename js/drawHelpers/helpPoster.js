@@ -1,4 +1,4 @@
-// the flip is an update
+// the flip is an update, so it lives here and not in the drawing
 function updateHelpPoster() {
   if (helpFlipping) {
     helpFlip += 0.08;
@@ -77,10 +77,8 @@ function drawHelpPoster() {
 function drawHelpDetails() {
   push();
 
-  // dim back
+  dimStore(100);
   noStroke();
-  fill(0, 100);
-  square(0, 0, 700);
 
   // border
   fill(0, 60);
@@ -152,7 +150,7 @@ function drawHelpDetails() {
     { key: "Y", name: "Youth", x: 355, y: 495 }
   ];
 
-  for (sound of sounds) {
+  for (var sound of sounds) {
     fill(255, 230, 185);
     rect(sound.x, sound.y, sound.x + 225, sound.y + 32, 6);
 

@@ -12,14 +12,11 @@ var packetNames = {
 
 function drawPacketDetails() {
   var packet = selectedPacket;
-  var question = dataQuestions.find((q) => q.key === packet.dataKey);
-  var value = answers[packet.dataKey];
+  var question = packet.question;
+  var value = packet.value;
 
   push();
-  // dim the store behind
-  noStroke();
-  fill(0, 130);
-  rect(0, 0, 700, 700);
+  dimStore(130);
 
   // paper card
   fill(0, 70);
@@ -38,7 +35,7 @@ function drawPacketDetails() {
   rect(125, 215, 255, 445, 12);
   var big = { x: 140, top: 250, w: 100, h: 160 };
   packet.drawBase(big);
-  packet.drawLabel(big);
+  drawPacketLabel(packet.type, big);
 
   // name
   textAlign(LEFT);
@@ -61,7 +58,7 @@ function drawPacketDetails() {
 
   // answer
   fill(...palette.hintBrown);
-  textSize(24);
+  textSize(20);
   text("your answer", 280, 375);
 
   fill(...palette.orange);
@@ -69,7 +66,7 @@ function drawPacketDetails() {
   strokeWeight(4);
   textFont(thickFont);
   textSize(52);
-  var shown = value === undefined ? "-" : value + " " +(question.unit || "");
+  var shown = value === undefined ? "-" : value + (question.unit || "");
   text(shown, 280, 435);
 
   // hint

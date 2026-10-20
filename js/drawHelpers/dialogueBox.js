@@ -7,13 +7,11 @@ function drawDialogue() {
 }
 
 function drawReplyChip() {
-  var step;
-
-  if (dialoguePhase === "reply") {
-    step = script[scriptIndex];
-  } else {
+  if (dialoguePhase !== "reply") {
     return;
   }
+
+  var step = script[scriptIndex];
 
   var x1 = replyButton.x;
   var y1 = replyButton.y;

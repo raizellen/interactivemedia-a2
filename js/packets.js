@@ -1,9 +1,8 @@
 class Packet {
-  constructor(type, x, colourMain, colourShadow, outline, dataKey) {
+  constructor(type, x, colourMain, outline, dataKey) {
     this.type = type;
     this.x = x;
     this.colourMain = colourMain;
-    this.colourShadow = colourShadow;
     this.outline = outline;
     this.dataKey = dataKey; // which survey answer this packet shows
 
@@ -13,13 +12,7 @@ class Packet {
       y: packetTop,
       w: packetWidth,
       h: packetHeight,
-      isActive: () =>
-        !starting &&
-        !helpOpen &&
-        !signOpen &&
-        selectedPacket === null &&
-        !conversationActive() &&
-        this.numberOfPackets() > 0,
+      isActive: () => storeIsClickable() && this.numberOfPackets() > 0,
       onPress: () => {
         selectedPacket = this;
       },
@@ -49,11 +42,17 @@ class Packet {
     };
   }
 
+  get question() {
+    return dataQuestions.find((q) => q.key === this.dataKey);
+  }
+
+  get value() {
+    return answers[this.dataKey];
+  }
+
   // how many packets
   numberOfPackets() {
-    var question = dataQuestions.find((q) => q.key === this.dataKey);
-    var value = answers[this.dataKey];
-    return round(constrain(map(value, 0, question.max, 1, 6), 1, 6));
+    return round(constrain(map(this.value, 0, this.question.max, 1, 6), 1, 6));
   }
 
   // is the packet at offset y the bottom (last drawn)
@@ -61,7 +60,7 @@ class Packet {
     return y === (this.numberOfPackets() - 1) * packetHeight;
   }
 
-  // number of packets change with data, move the button onto the bottom packet every frame
+  // move the button onto the bottom packet
   updateButton() {
     this.button.y = packetTop + (this.numberOfPackets() - 1) * packetHeight;
   }
@@ -121,118 +120,6 @@ class Packet {
 
     noStroke();
   }
-
-  drawLabel(pd) {
-    textStyle(BOLD);
-    var textX = pd.x + pd.w/2 + 3;
-
-    switch (this.type) {
-      case "magicSarap":
-        fill(200, 0, 20);
-        ellipse(
-          pd.x + pd.w * 0.2,
-          pd.top + pd.h * 0.15,
-          pd.w * 0.3,
-          pd.h * 0.125
-        );
-        fill(50, 50, 200);
-        textSize(pd.w * 0.18);
-        text(`MAGIC \nSHEREP`, textX, pd.top + pd.h * 0.5);
-        break;
-
-      case "milo":
-        fill(220, 200, 0);
-        rect(pd.x, pd.top + pd.h * 0.05, pd.x + pd.w, pd.top + pd.h * 0.15);
-        fill(255);
-        ellipse(pd.x + pd.w * 0.2, pd.top + pd.h * 0.3, pd.w * 0.7, pd.h * 0.3);
-        fill(200, 70, 50);
-        textSize(pd.w * 0.25);
-        text("LIMO", textX, pd.top + pd.h * 0.5);
-        break;
-
-      case "tang":
-        fill(255);
-        circle(pd.x + pd.w * 0.2, pd.top + pd.h * 0.7, pd.w * 0.2);
-        circle(pd.x + pd.w * 0.2, pd.top + pd.h * 0.15, pd.w * 0.7);
-        fill(230, 100, 130);
-        circle(pd.x + pd.w * 0.3, pd.top + pd.h * 0.21, pd.w * 0.5);
-        fill(100, 200, 30);
-        arc(
-          pd.x + pd.w * 0.3,
-          pd.top + pd.h * 0.2,
-          pd.w * 0.5,
-          pd.h * 0.34,
-          0,
-          PI
-        );
-        fill(255);
-        textSize(pd.w * 0.2);
-        text("INA", textX, pd.top + pd.h * 0.45);
-        textSize(pd.w * 0.12);
-        text("PAMELA", textX, pd.top + pd.h * 0.32);
-        break;
-
-      case "surf":
-        fill(220);
-        rect(pd.x, pd.top + pd.h * 0.12, pd.x + pd.w, pd.top + pd.h * 0.2);
-        rect(pd.x, pd.top + pd.h * 0.82, pd.x + pd.w, pd.top + pd.h * 0.9);
-        fill(200, 100, 150);
-        rect(
-          pd.x,
-          pd.top + pd.h * 0.12,
-          pd.x + pd.w * 0.2,
-          pd.top + pd.h * 0.2
-        );
-        rect(
-          pd.x + pd.w * 0.6,
-          pd.top + pd.h * 0.82,
-          pd.x + pd.w,
-          pd.top + pd.h * 0.9
-        );
-        stroke(255);
-        fill(50, 70, 150);
-        textSize(pd.w * 0.25);
-        text("Swim", textX, pd.top + pd.h * 0.5);
-        textSize(pd.w * 0.2);
-        text("sheet", textX, pd.top + pd.h * 0.6);
-        noStroke();
-        break;
-
-      case "kopiko":
-        fill(200, 70, 50);
-        quad(
-          pd.x + pd.w * 0.15,
-          pd.top + pd.h * 0.35,
-          pd.x + pd.w * 0.15,
-          pd.top + pd.h * 0.2,
-          pd.x + pd.w * 0.9,
-          pd.top + pd.h * 0.15,
-          pd.x + pd.w * 0.9,
-          pd.top + pd.h * 0.3
-        );
-        fill(255);
-        textSize(pd.w * 0.15);
-        text("KOPIMO", textX, pd.top + pd.h * 0.27);
-        fill(100, 30, 20);
-        textSize(pd.w * 0.25);
-        text("Puno", textX, pd.top + pd.h * 0.55);
-        break;
-
-      case "ovaltine":
-        fill(220, 200, 0);
-        ellipse(pd.x + pd.w * 0.2, pd.top + pd.h * 0.3, pd.w * 0.3, pd.h * 0.2);
-        ellipse(pd.x + pd.w * 0.7, pd.top + pd.h * 0.1, pd.w * 0.2, pd.h * 0.1);
-        fill(110, 70, 190);
-        stroke(255);
-        textSize(pd.w * 0.2);
-        text("Ovalbiggy", textX, pd.top + pd.h * 0.45);
-        fill(150, 80, 30);
-        textSize(pd.w * 0.15);
-        text("Ovalbiggies", textX, pd.top + pd.h * 0.6);
-        noStroke();
-        break;
-    }
-  }
 }
 
 function createPackets() {
@@ -241,7 +128,6 @@ function createPackets() {
       "magicSarap",
       65,
       color(250, 220, 10),
-      color(250, 200, 20),
       color(230, 150, 20),
       "food"
     ),
@@ -249,7 +135,6 @@ function createPackets() {
       "milo",
       125,
       color(100, 200, 70),
-      color(80, 180, 50),
       color(70, 150, 30),
       "travel"
     ),
@@ -257,7 +142,6 @@ function createPackets() {
       "tang",
       180,
       color(230, 100, 130),
-      color(200, 80, 80),
       color(180, 60, 60),
       "music"
     ),
@@ -265,7 +149,6 @@ function createPackets() {
       "surf",
       490,
       color(60, 100, 200),
-      color(40, 80, 180),
       color(30, 70, 160),
       "events"
     ),
@@ -273,7 +156,6 @@ function createPackets() {
       "kopiko",
       575,
       color(230, 210, 170),
-      color(200, 180, 130),
       color(180, 160, 110),
       "language"
     ),
@@ -281,22 +163,27 @@ function createPackets() {
       "ovaltine",
       635,
       color(230, 120, 30),
-      color(200, 90, 0),
       color(180, 70, 0),
       "movies"
     ),
   ];
 }
 
+// number of packets change with data, so keep each button on its bottom packet
+function updatePackets() {
+  for (var packet of packets) {
+    packet.updateButton();
+  }
+}
+
 function drawPackets() {
   for (var packet of packets) {
     var amount = packet.numberOfPackets();
-    packet.updateButton();
     for (var y = 0; y < packetHeight * amount; y += packetHeight) {
       var packetData = packet.packetCalculations(y);
 
       packet.drawBase(packetData);
-      packet.drawLabel(packetData);
+      drawPacketLabel(packet.type, packetData);
     }
   }
 }

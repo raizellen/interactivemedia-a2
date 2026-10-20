@@ -64,6 +64,11 @@ var closeHelpButton;
 var replyButton;
 var submitButton;
 
+// nothing is covering the store, so the sign, posters and packets can be clicked
+function storeIsClickable() {
+  return !starting && !helpOpen && !signOpen && !namePosterOpen && selectedPacket === null && !conversationActive();
+}
+
 // make buttons in the same order things are drawn, the one made last is on top
 function createButtons() {
   // button on the starting screen
@@ -84,7 +89,7 @@ function createButtons() {
     y: 80,
     w: 500,
     h: 90,
-    isActive: () => !starting && !helpOpen && !signOpen && !namePosterOpen && selectedPacket === null && !conversationActive(),
+    isActive: storeIsClickable,
     onPress: () => {
       signOpen = true;
     },
@@ -96,7 +101,7 @@ function createButtons() {
     y: 260,
     w: 95,
     h: 65,
-    isActive: () => !starting && !helpOpen && !signOpen && !namePosterOpen && selectedPacket === null && !conversationActive(),
+    isActive: storeIsClickable,
     onPress: () => {
       namePosterOpen = true;
     },
@@ -108,7 +113,7 @@ function createButtons() {
     y: 560,
     w: 150,
     h: 90,
-    isActive: () => !starting && !helpOpen && !signOpen && !namePosterOpen && selectedPacket === null && !conversationActive(),
+    isActive: storeIsClickable,
     onPress: () => {
       helpFlipping = true;
     },

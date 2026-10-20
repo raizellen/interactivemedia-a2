@@ -1,3 +1,14 @@
+// start or stop a looping sound
+function toggleSound(sound, volume) {
+  sound.amp(volume);
+  if (sound.isPlaying()) {
+    sound.stop();
+  } else {
+    sound.play();
+    sound.loop();
+  }
+}
+
 function keyPressed() {
   userStartAudio()
 
@@ -8,42 +19,18 @@ function keyPressed() {
   }
 
   if (key === 'k'){
-    karaoke.amp(0.7);
-    if (karaoke.isPlaying()){
-      karaoke.stop();
-    } else {
-      karaoke.play();
-      karaoke.loop();
-    }
+    toggleSound(karaoke, 0.7);
   }
 
   if (key === 'y'){
-    kidsPlaying.amp(0.5);
-    if (kidsPlaying.isPlaying()){
-      kidsPlaying.stop();
-    } else {
-      kidsPlaying.play();
-      kidsPlaying.loop();
-    }
+    toggleSound(kidsPlaying, 0.5);
   }
 
   if (key === 'r'){
-    rooster.amp(0.2);
-    if (rooster.isPlaying()){
-      rooster.stop();
-    } else {
-      rooster.play();
-      rooster.loop();
-    }
+    toggleSound(rooster, 0.2);
   }
 
   if (key === 's'){
-    sweeping.amp(0.3);
-    if (sweeping.isPlaying()){
-      sweeping.stop();
-    } else {
-      sweeping.play();
-      sweeping.loop();
-    }
+    toggleSound(sweeping, 0.3);
   }
 }

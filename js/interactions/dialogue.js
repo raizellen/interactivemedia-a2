@@ -13,6 +13,15 @@ var script = [
 
 const typeSpeed = 0.8; // characters typed per frame
 
+// dialogue state
+var dialoguePhase = "idle"; // idle, talking, reply, asking, done
+var dialogueTranslation = "";
+var scriptIndex = 0; // position in the script
+var dialogueText = "";
+var charsShown = 0; // typewriter progress
+var inputNotice = ""; // warning shown in the box
+var inputShown = false;
+
 function conversationActive() {
   return (dialoguePhase === "talking" || dialoguePhase === "reply" || dialoguePhase === "asking");
 }
