@@ -68,7 +68,7 @@ function drawPacketDetails() {
   stroke(195, 47, 39);
   strokeWeight(4);
   textFont(thickFont);
-  textSize(60);
+  textSize(52);
   var shown = value === undefined ? "-" : value + (question.unit || "");
   text(shown, 280, 435);
 

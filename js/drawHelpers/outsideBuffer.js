@@ -4,7 +4,6 @@ function drawOutside(pg) {
   pg.noStroke();
   pg.textFont(thickFont);
 
-  drawBench(pg);
   drawWood(pg);
   drawBottle(pg);
   drawPost(pg);
@@ -12,6 +11,7 @@ function drawOutside(pg) {
   drawFrame(pg);
   drawShadows(pg);
   drawRoof(pg);
+  drawBench(pg);
 }
 
 function drawWood(pg){

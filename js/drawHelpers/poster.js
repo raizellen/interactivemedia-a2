@@ -135,10 +135,10 @@ function drawPosterDetails(){
   textFont(normalFont);
   textAlign(LEFT);
   textSize(26);
-  text("• This poster is my name in Baybayin!", 150, 290);
-  text("• This text is a custom font I made :)", 150, 320);
-  text("• The help poster has a monogram of my initials", 150, 350);
-  text("• The help poster also has my birthday and the subject code", 150, 380);
+  text("• This poster is my name in Baybayin!", 150, 310);
+  text("• This text is a custom font I made :)", 150, 340);
+  text("• The help poster has a monogram of my initials", 150, 370);
+  text("• The help poster has my birthday and the subject code", 150, 400);
 
   // hint
   textAlign(CENTER);
