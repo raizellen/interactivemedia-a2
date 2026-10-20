@@ -53,7 +53,7 @@ class Packet {
   numberOfPackets() {
     var question = dataQuestions.find((q) => q.key === this.dataKey);
     var value = answers[this.dataKey];
-    return round(constrain(map(value, 0, question.max, 0, 6), 0, 6));
+    return round(constrain(map(value, 0, question.max, 1, 6), 1, 6));
   }
 
   // is the packet at offset y the bottom (last drawn)
@@ -67,25 +67,59 @@ class Packet {
   }
 
   drawBase(pd) {
-    fill(0, 100);
-    rect(pd.x + 2, pd.top, pd.x + pd.w + 2, pd.top + pd.h + 2);
-
-    stroke(this.outline);
-    strokeWeight(1);
+    noStroke();
+    fill(0, 65);
+    rect(
+      pd.x + 3,
+      pd.top + 4,
+      pd.x + pd.w + 3,
+      pd.top + pd.h + 4,
+      4
+    );
 
     fill(this.colourMain);
-    rect(pd.x, pd.top, pd.x + pd.w, pd.top + pd.h);
-
-    noStroke();
-
-    fill(this.colourShadow);
-    rect(pd.x, pd.top, pd.x + verticalShadowWidth, pd.top + pd.h);
+    stroke(this.outline);
+    strokeWeight(1);
     rect(
       pd.x,
-      pd.top + pd.h,
+      pd.top,
       pd.x + pd.w,
-      pd.top + pd.h - horizontalShadowHeight
+      pd.top + pd.h,
+      4
     );
+
+    // subtle highlight on the left
+    noStroke();
+    fill(255, 65);
+    rect(
+      pd.x + 2,
+      pd.top + 4,
+      pd.x + 5,
+      pd.top + pd.h - 4
+    );
+
+    // shading on the right
+    fill(0, 20);
+    rect(
+      pd.x + pd.w - 4,
+      pd.top + 4,
+      pd.x + pd.w - 2,
+      pd.top + pd.h - 4
+    );
+
+    // sealed edges at the top and bottom
+    stroke(this.outline);
+    strokeWeight(1);
+    line(
+      pd.x + 4, pd.top + 2,
+      pd.x + pd.w - 4, pd.top + 2
+    );
+    line(
+      pd.x + 4, pd.top + pd.h - 2,
+      pd.x + pd.w - 4, pd.top + pd.h - 2
+    );
+
+    noStroke();
   }
 
   drawLabel(pd) {

@@ -1,4 +1,4 @@
-// card shown when a packet is clicked. Clicking outside it closes it.
+// card shown when a packet is clicked, clicking outside it closes it
 var packetPanel = { x: 100, y: 190, w: 500, h: 320 };
 
 var packetNames = {

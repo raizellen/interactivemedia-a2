@@ -12,36 +12,40 @@ function drawStore(pg) {
 
   pg.push();
   // wooden board
-  pg.fill(150, 100, 60);
-  pg.rect(50, 535, 700, 700);
-  pg.rect(0, 0, 300, 150);
-  pg.quad(300, 0, 700, 105, 700, 150, 300, 150);
-
-  // post
-  pg.stroke(0);
-  pg.strokeWeight(2);
-  pg.fill(80);
-  pg.rect(0, 0, 50, 700);
-  pg.fill(50);
-  pg.rect(0, 620, 60, 700);
-  pg.noStroke();
-
-  // water bottle
-  pg.fill(120, 150, 180, 200);
-  pg.rect(250, 370, 285, 415, 7);
-  pg.rect(250, 340, 285, 370, 8);
-  pg.fill(230);
-  pg.rect(262, 335, 273, 340, 2);
-  pg.stroke(120, 150, 180);
-  for (var y = 350; y < 415; y += 10) {
-    var middle = 0;
-    if (y == 370) {
-      middle = 4;
+    pg.fill(150, 100, 60);
+    pg.rect(50, 535, 700, 700); // bottom
+    pg.rect(0, 0, 300, 150); // top (need quad next so cant be one)
+    pg.quad(300, 0, 700, 105, 700, 150, 300, 150); // top
+    pg.stroke(139, 94, 52);
+    pg.strokeWeight(1);
+    for (var y = 535; y < 700; y += 28) {
+      pg.line(50, y, 700, y);
     }
-    pg.line(251 + middle, y, 284 - middle, y);
-  }
   pg.pop();
 
+  pg.push();
+    // water bottle
+    pg.fill(120, 150, 180, 200);
+    pg.rect(250, 340, 285, 370, 8);
+    pg.rect(250, 370, 285, 415, 7);
+    pg.fill(230);
+    pg.rect(262, 335, 273, 340, 2);
+    pg.stroke(120, 150, 180);
+    for (var y = 350; y < 415; y += 10) {
+      var middle = 0;
+      if (y == 370) {
+        middle = 4;
+      }
+      pg.line(251 + middle, y, 284 - middle, y);
+    }
+    // reflection
+    pg.noStroke();
+    pg.fill(235, 245, 255, 150);
+    pg.rect(254, 344, 257, 360, 2);
+    pg.rect(254, 374, 257, 405, 2);
+  pg.pop();
+
+  drawPost(pg);
   drawNet(pg);
   drawFrame(pg);
   drawShadows(pg);
@@ -77,23 +81,28 @@ function drawInside(pg) {
   //shelf
   pg.fill(100, 60, 20);
   pg.rect(50, 280, 500, 300);
-  // box
+  // cabinet
   pg.rect(50, 380, 400, 400);
   pg.rect(380, 380, 400, 500);
-  pg.rect(500, 300, 700, 335); // reference can delete later
 
   // grey shelving
   pg.fill(150);
   pg.rect(50, 460, 380, 470);
   pg.rect(600, 200, 620, 500);
 
+  // box
+  pg.stroke(50);
   pg.fill(100);
   pg.rect(320, 350, 390, 380, 8);
   pg.stroke(0);
   pg.line(320, 360, 390, 360);
   pg.noStroke();
+  pg.fill(130);
+  pg.rect(325, 351, 385, 353, 5);
   pg.fill(100, 80, 30);
   pg.rect(350, 355, 360, 365, 2);
+  pg.fill(150, 120, 50);
+  pg.rect(352, 357, 358, 359, 1);
 
   // items
   pg.push();
@@ -174,6 +183,26 @@ function drawShadows(pg) {
   pg.pop();
 }
 
+function drawPost(pg){
+  pg.push();
+  pg.stroke(0);
+  pg.strokeWeight(2);
+  pg.fill(80);
+  pg.rect(0, 0, 50, 700);
+
+  // darker right edge
+  pg.noStroke();
+  pg.fill(55, 55, 55, 100);
+  pg.rect(43, 0, 50, 620);
+
+  // darker base
+  pg.stroke(0);
+  pg.strokeWeight(2);
+  pg.fill(50);
+  pg.rect(0, 620, 60, 700);
+  pg.pop();
+}
+
 function drawRoof(pg) {
   pg.push();
   pg.stroke(80);
@@ -196,7 +225,38 @@ function drawRoof(pg) {
   }
   pg.endShape(CLOSE);
 
+  // front
+  pg.stroke(80, 85, 95);
+  pg.strokeWeight(2);
+  pg.fill(160, 170, 185);
   pg.quad(0, 10, 300, 10, 330, 70, 0, 70);
+
+  // ridges
+  pg.stroke(115, 125, 140);
+  pg.strokeWeight(2);
+  for (var x = 15; x < 300; x += 18) {
+    var endX = x + (x / 300) * 30;
+    pg.line(x, 12, endX, 68);
+  }
+
+  // light in ridges
+  pg.stroke(185, 190, 200);
+  pg.strokeWeight(1);
+  for (var x = 20; x < 300; x += 18) {
+    var endX = x + (x / 300) * 30;
+    pg.line(x + 3, 12, endX + 3, 68);
+  }
+
+  // front edge
+  pg.noStroke();
+  pg.fill(90, 100, 115);
+  pg.quad(0, 70, 330, 70, 324, 77, 0, 77);
+
+  // front edge highlight
+  pg.stroke(190, 195, 205);
+  pg.strokeWeight(1);
+  pg.line(0, 70, 330, 70);
+
   pg.pop();
 }
 
