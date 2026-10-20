@@ -50,6 +50,8 @@ var startButton;
 var signButton;
 var helpButton;
 var closeHelpButton;
+var replyButton;
+var submitButton;
 
 function createButtons() {
   // button on the starting screen
@@ -70,7 +72,7 @@ function createButtons() {
     y: 80,
     w: 500,
     h: 90,
-    isActive: () => !starting && !posterBack && !signOpen && selectedPacket === null,
+    isActive: () => !starting && !posterBack && !signOpen && selectedPacket === null && !conversationActive(),
     onPress: () => {
       signOpen = true;
     },
@@ -82,7 +84,7 @@ function createButtons() {
     y: 560,
     w: 150,
     h: 90,
-    isActive: () => !starting && !posterBack && !signOpen && selectedPacket === null,
+    isActive: () => !starting && !posterBack && !signOpen && selectedPacket === null && !conversationActive(),
     onPress: () => {
       // can't start a second flip while one is running
       if (!posterFlipping) {
@@ -100,6 +102,30 @@ function createButtons() {
     isActive: () => !starting && posterBack,
     onPress: () => {
       posterBack = false;
+    },
+  });
+
+  // player's reply in the conversation
+  replyButton = new Button({
+    x: 300,
+    y: 452,
+    w: 340,
+    h: 54,
+    isActive: () => dialoguePhase === "reply",
+    onPress: () => {
+      goToStep(scriptIndex + 1);
+    },
+  });
+
+  // next to the input, same as pressing enter
+  submitButton = new Button({
+    x: 520,
+    y: 639,
+    w: 95,
+    h: 34,
+    isActive: () => dialoguePhase === "asking" && inputShown,
+    onPress: () => {
+      submitDataAnswer();
     },
   });
 }

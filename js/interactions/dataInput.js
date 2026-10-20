@@ -1,5 +1,6 @@
 var answers = {};
 var currentQuestion = 0;
+var submitting = false;
 
 var dataQuestions = [
   {
@@ -41,36 +42,43 @@ async function readAnswers() {
 }
 
 async function writeAnswers() {
-  await fetch('/answers', {
+  const response = await fetch('/answers', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(answers)
   });
+  if (!response.ok) {
+    throw new Error(`Saving answers failed: ${response.status}`);
+  }
 }
 
 function createInputField() {
   inputValue = createInput();
-  inputValue.position(0, 700);
-  inputValue.style('width', '700px');
-  inputValue.attribute('type', 'number');
+  inputValue.addClass('tindera-input'); // styling in style.css
+  inputValue.position(dialogueBox.x + 25, dialogueBox.y + 119); // sits inside the dialogue box
+  inputValue.attribute('type', 'number'); // automatically adds up down arrows (stepper) in chrome, safari and edge
   inputValue.attribute('min', '0');
+  inputValue.attribute('placeholder', 'type a number, then press Enter');
+  inputValue.input(() => {
+    inputNotice = ""; // clear warning when start typing
+  });
+  inputValue.elt.addEventListener('keydown', (event) => { // html element so need event listener
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      submitDataAnswer();
+    }
+  });
   inputValue.hide();
 }
 
-function startDataCollection() {
-  inputValue.value('');
-  inputValue.attribute('placeholder', dataQuestions[currentQuestion].question);
-  inputValue.show();
-  inputValue.elt.focus();
-}
-
 async function submitDataAnswer() {
+  if (dialoguePhase !== "asking" || !inputShown || submitting) return;
   if (currentQuestion >= dataQuestions.length) return;
 
   var value = inputValue.value();
 
   if (value.trim() === '') {
-    alert("Please enter a number.");
+    inputNotice = "Please enter a number.";
     return;
   }
 
@@ -78,26 +86,32 @@ async function submitDataAnswer() {
   var question = dataQuestions[currentQuestion];
 
   if (!Number.isFinite(number) || number < 0) {
-    alert("Please enter a valid number.");
+    inputNotice = "Please enter a valid number.";
     return;
   }
 
   if (question.key === "language" && number > 100) {
-    alert("Please enter a percentage between 0 and 100.");
+    inputNotice = "Please enter a percentage between 0 and 100.";
     return;
   }
 
   answers[question.key] = number;
 
-  await writeAnswers();
+  submitting = true;
+  try {
+    await writeAnswers();
 
-  currentQuestion++;
-  inputValue.value('');
+    currentQuestion++;
 
-  if (currentQuestion < dataQuestions.length) {
-    startDataCollection();
-  } else {
-    inputValue.hide();
-    alert("All six answers have been saved!");
+    if (currentQuestion < dataQuestions.length) {
+      beginQuestion();
+    } else {
+      finishQuestions();
+    }
+  } catch (error) {
+    console.error('Unable to save dialogue answer:', error);
+    inputNotice = "Could not save your answer. Please try again.";
+  } finally {
+    submitting = false;
   }
 }

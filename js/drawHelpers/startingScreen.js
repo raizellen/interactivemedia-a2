@@ -111,7 +111,7 @@ function drawStartButton() {
   strokeWeight(5);
   textSize(36);
   textAlign(CENTER, CENTER);
-  text("BILI BILI PO", x1 + startButton.w / 2, y1 + startButton.h / 2 - 5);
+  text("PABILI PO", x1 + startButton.w / 2, y1 + startButton.h / 2 - 5);
 
   noStroke();
   fill(230, 215, 180);

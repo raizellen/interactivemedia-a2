@@ -53,11 +53,12 @@ function drawHelp() {
   noStroke();
 
   textFont(normalFont);
-  textSize(32);
+  textSize(28);
   fill(45, 55, 65);
   text("• Click the sign to learn about the store", 105, 303);
-  text("• Click a bottom packet to view its details", 105, 338);
-  text("• Scroll to open/close the store!", 105, 373);
+  text("• Click a bottom packet to view its details", 105, 326);
+  text("• Scroll to open/close the store!", 105, 349);
+  text("• Type 'a' to answer the questions again p.s. store must be open", 105, 372);
 
   fill(170, 55, 45);
   textFont(thickFont);

@@ -31,6 +31,10 @@ async function setup() {
 function draw() {
   background(180, 230, 250);
   image(insideBuffer, 0, 0);
+
+  updateTindera();
+  drawTindera();
+
   image(outsideBuffer, 0, 0);
 
   drawSign();
@@ -38,7 +42,10 @@ function draw() {
   drawPoster();
   drawPackets();
   drawLight();
-  
+
+  updateDialogue();
+  drawDialogue();
+
   if (posterBack) {
     drawHelp();
   }

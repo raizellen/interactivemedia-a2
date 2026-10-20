@@ -15,13 +15,22 @@ function mousePressed() {
     return;
   }
 
+  // conversation on - clicks go to the dialogue
+  if (conversationActive()) {
+    clickDialogue();
+    return;
+  }
+
   Button.handlePress();
 }
 
 function mouseWheel(event) {
-  if (starting) {
-    return false; // stops the page scrolling while on starting screen
+  if (starting || conversationActive()) {
+    return false;
   }
+
+  // remember which way the shutter is going
+  shutterDirection = event.delta > 0 ? "opening" : "closing";
 
   if (event.delta > 0 && closing > 0) {
     closing -= 1;

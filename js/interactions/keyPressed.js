@@ -1,15 +1,9 @@
-
 function keyPressed() {
   userStartAudio()
 
-  if (key === 'a' && inputValue.elt.style.display === 'none') {
-    currentQuestion = 0;
-    startDataCollection();
-    return false;
-  }
-  
-  if (key === 'Enter') {
-    submitDataAnswer();
+  // answer the questions again once the conversation is over
+  if (key === 'a' && dialoguePhase === "done") {
+    replayQuestions();
     return false;
   }
 

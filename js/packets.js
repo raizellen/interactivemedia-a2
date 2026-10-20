@@ -19,6 +19,7 @@ class Packet {
         !posterBack &&
         !signOpen &&
         selectedPacket === null &&
+        !conversationActive() &&
         this.numberOfPackets() > 0,
       onPress: () => {
         selectedPacket = this;
