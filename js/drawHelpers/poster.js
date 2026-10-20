@@ -11,7 +11,7 @@ function drawPoster() {
   noStroke();
   fill(100, 50, 50);
   textSize(20);
-  text("ᜍᜒᜐᜒᜎ᜔ \nᜎᜓᜁᜐ᜔", 420, 282);
+  text("ᜍᜒᜐᜒᜎ᜔\nᜎᜓᜁᜐ᜔", 450, 282);
 
   // flip
   if (posterFlipping) {
@@ -62,14 +62,14 @@ function drawPoster() {
     stroke(0);
     fill(255);
     textSize(15);
-    text("₱715", 520, 575);
+    text("₱715", 530, 575);
 
     fill(220, 180, 60);
-    text("TEXT 31080", 460, 643);
+    text("TEXT 31080", 475, 643);
 
     fill(40, 70, 150);
     textSize(25);
-    text("?HELP", 464, 610);
+    text("?HELP", 495, 610);
   }
   pop();
 }

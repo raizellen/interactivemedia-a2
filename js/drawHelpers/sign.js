@@ -5,12 +5,20 @@ function drawSign() {
   fill(0, 100); //shadow
   rect(75, 90, 575, 180);
 
-  fill(250, 210, 190); //bg
+  fill(242, 112, 89); // border
   rect(70, 80, 570, 170);
 
-  fill(0);
+  fill(247, 157, 101); //bg
+  rect(75, 85, 565, 165);
+
+  fill(247, 178, 103);
+  quad(75,85,325,85,565,165,315,165);
+
+  fill(195, 47, 39);
+  stroke(98, 23, 8);
+  strokeWeight(5);
   textSize(55);
-  text("SARI SARI STORE", 100, 140);
+  text("SARI-SARI STORE", 320, 140);
   pop();
 }
 
@@ -60,7 +68,7 @@ function drawSignDetails() {
     150, 290, 544, 520
   );
   text(
-    "This project was created for Interactive Media: Assignment 2 :)",
+    "This project was created for Interactive Media: Assignment 2",
     150, 398, 544, 520
   );
 

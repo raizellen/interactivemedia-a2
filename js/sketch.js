@@ -9,6 +9,7 @@ async function setup() {
   ellipseMode(CORNER);
   noStroke();
   textFont(thickFont);
+  textAlign(CENTER);
 
   await readAnswers();
   createInputField();

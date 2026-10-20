@@ -90,6 +90,7 @@ class Packet {
 
   drawLabel(pd) {
     textStyle(BOLD);
+    var textX = pd.x + pd.w/2 + 3;
 
     switch (this.type) {
       case "magicSarap":
@@ -102,7 +103,7 @@ class Packet {
         );
         fill(50, 50, 200);
         textSize(pd.w * 0.18);
-        text(`MAGIC \nSARAP`, pd.x + pd.w * 0.16, pd.top + pd.h * 0.5);
+        text(`MAGIC \nSARAP`, textX, pd.top + pd.h * 0.5);
         break;
 
       case "milo":
@@ -112,7 +113,7 @@ class Packet {
         ellipse(pd.x + pd.w * 0.2, pd.top + pd.h * 0.3, pd.w * 0.7, pd.h * 0.3);
         fill(200, 70, 50);
         textSize(pd.w * 0.25);
-        text("MILO", pd.x + pd.w * 0.25, pd.top + pd.h * 0.5);
+        text("MILO", textX, pd.top + pd.h * 0.5);
         break;
 
       case "tang":
@@ -132,9 +133,9 @@ class Packet {
         );
         fill(255);
         textSize(pd.w * 0.2);
-        text("TANG", pd.x + pd.w * 0.31, pd.top + pd.h * 0.45);
+        text("TANG", textX, pd.top + pd.h * 0.45);
         textSize(pd.w * 0.12);
-        text("POMELO", pd.x + pd.w * 0.34, pd.top + pd.h * 0.32);
+        text("POMELO", textX, pd.top + pd.h * 0.32);
         break;
 
       case "surf":
@@ -157,9 +158,9 @@ class Packet {
         stroke(255);
         fill(50, 70, 150);
         textSize(pd.w * 0.25);
-        text("Surf", pd.x + pd.w * 0.25, pd.top + pd.h * 0.5);
+        text("Surf", textX, pd.top + pd.h * 0.5);
         textSize(pd.w * 0.2);
-        text("excel", pd.x + pd.w * 0.27, pd.top + pd.h * 0.6);
+        text("excel", textX, pd.top + pd.h * 0.6);
         noStroke();
         break;
 
@@ -177,10 +178,10 @@ class Packet {
         );
         fill(255);
         textSize(pd.w * 0.15);
-        text("KOPIKO", pd.x + pd.w * 0.3, pd.top + pd.h * 0.27);
+        text("KOPIKO", textX, pd.top + pd.h * 0.27);
         fill(100, 30, 20);
         textSize(pd.w * 0.25);
-        text("Blanca", pd.x + pd.w * 0.2, pd.top + pd.h * 0.55);
+        text("Blanca", textX, pd.top + pd.h * 0.55);
         break;
 
       case "ovaltine":
@@ -190,10 +191,10 @@ class Packet {
         fill(110, 70, 190);
         stroke(255);
         textSize(pd.w * 0.2);
-        text("Ovaltine", pd.x + pd.w * 0.2, pd.top + pd.h * 0.45);
+        text("Ovaltine", textX, pd.top + pd.h * 0.45);
         fill(150, 80, 30);
         textSize(pd.w * 0.15);
-        text("Ovalteenies", pd.x + pd.w * 0.2, pd.top + pd.h * 0.6);
+        text("Ovalteenies", textX, pd.top + pd.h * 0.6);
         noStroke();
         break;
     }
