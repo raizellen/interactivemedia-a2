@@ -12,19 +12,20 @@ var kidsPlaying;
 // packets
 var packetWidth = 50;
 var packetHeight = 80;
+var packetTop = 200; // y of the top packet in every stack
 var verticalShadowWidth = 8;
 var horizontalShadowHeight = 8;
 var packets = [];
 var selectedPacket = null;
 
 // help poster
-var posterFlipping = false;
-var posterBack = false;
-var posterFlip = 0;
+var helpFlipping = false;
+var helpOpen = false;
+var helpFlip = 0;
 
-// sign and poster details
+// sign and name poster details
 var signOpen = false;
-var posterOpen = false;
+var namePosterOpen = false;
 
 // shutter
 var closing = 129;

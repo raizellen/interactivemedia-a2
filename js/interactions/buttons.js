@@ -12,8 +12,18 @@ class Button {
     Button.all.push(this);
   }
 
-  isHovering() {
+  isUnderMouse() {
     return this.isActive() && collidePointRect(mouseX, mouseY, this.x, this.y, this.w, this.h);
+  }
+
+  // only one button counts as hovered when they overlap
+  // buttons made later are drawn on top, so search from the end
+  static topHovered() {
+    return Button.all.findLast((b) => b.isUnderMouse());
+  }
+
+  isHovering() {
+    return Button.topHovered() === this;
   }
 
   // current scale: enlarged on hover, 1 otherwise.
@@ -33,13 +43,13 @@ class Button {
   // call from draw() once per frame, hand cursor if a button is hovered
   // static cause not for specific instances
   static updateCursor() {
-    cursor(Button.all.some((b) => b.isHovering()) ? HAND : ARROW);
+    cursor(Button.topHovered() ? HAND : ARROW);
   }
 
-  // call from mousePressed(), triggers the first hovered button
+  // call from mousePressed(), triggers the hovered button
   // static cause not for specific instances
   static handlePress() {
-    var hit = Button.all.find((b) => b.isHovering());
+    var hit = Button.topHovered();
     if (hit) {
       hit.onPress();
     }
@@ -48,12 +58,13 @@ class Button {
 
 var startButton;
 var signButton;
-var posterButton;
-var helpButton;
+var namePosterButton;
+var helpPosterButton;
 var closeHelpButton;
 var replyButton;
 var submitButton;
 
+// make buttons in the same order things are drawn, the one made last is on top
 function createButtons() {
   // button on the starting screen
   startButton = new Button({
@@ -73,36 +84,33 @@ function createButtons() {
     y: 80,
     w: 500,
     h: 90,
-    isActive: () => !starting && !posterBack && !signOpen && !posterOpen && selectedPacket === null && !conversationActive(),
+    isActive: () => !starting && !helpOpen && !signOpen && !namePosterOpen && selectedPacket === null && !conversationActive(),
     onPress: () => {
       signOpen = true;
     },
   });
 
-  // poster button
-  posterButton = new Button({
+  // name poster - opens the easter eggs
+  namePosterButton = new Button({
     x: 400,
     y: 260,
     w: 95,
     h: 65,
-    isActive: () => !starting && !posterBack && !signOpen && !posterOpen && selectedPacket === null && !conversationActive(),
+    isActive: () => !starting && !helpOpen && !signOpen && !namePosterOpen && selectedPacket === null && !conversationActive(),
     onPress: () => {
-      posterOpen = true;
+      namePosterOpen = true;
     },
   });
 
-  // help poster
-  helpButton = new Button({
+  // help poster - flips over to show the controls
+  helpPosterButton = new Button({
     x: 400,
     y: 560,
     w: 150,
     h: 90,
-    isActive: () => !starting && !posterBack && !signOpen && !posterOpen && selectedPacket === null && !conversationActive(),
+    isActive: () => !starting && !helpOpen && !signOpen && !namePosterOpen && selectedPacket === null && !conversationActive(),
     onPress: () => {
-      // can't start a second flip while one is running
-      if (!posterFlipping) {
-        posterFlipping = true;
-      }
+      helpFlipping = true;
     },
   });
 
@@ -112,9 +120,9 @@ function createButtons() {
     y: 120,
     w: 50,
     h: 50,
-    isActive: () => !starting && posterBack,
+    isActive: () => !starting && helpOpen,
     onPress: () => {
-      posterBack = false;
+      helpOpen = false;
     },
   });
 

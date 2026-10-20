@@ -19,7 +19,7 @@ function drawSign() {
   fill(247, 178, 103);
   quad(x + 5, y + 5, x + w / 2, y + 5, x + w - 5, y + h - 5, x + w / 2 - 10, y + h - 5);
 
-  fill(195, 47, 39);
+  fill(...palette.red);
   stroke(98, 23, 8);
   strokeWeight(5);
   textSize(h * 0.61);
@@ -44,9 +44,9 @@ function drawSignDetails() {
   noStroke();
   fill(0, 70);
   rect(128, 198, 578, 538); // shadow
-  stroke(200, 185, 150);
+  stroke(...palette.paperEdge);
   strokeWeight(2);
-  fill(250, 242, 215);
+  fill(...palette.paper);
   rect(122, 192, 572, 532);
 
   drawTape(160, 194, -0.35);
@@ -54,17 +54,17 @@ function drawSignDetails() {
 
   textAlign(CENTER);
   noStroke();
-  fill(195, 47, 39);
+  fill(...palette.red);
   textSize(34);
   text("ABOUT THE PROJECT", 347, 252);
 
   // divider
-  stroke(195, 47, 39, 150);
+  stroke(...palette.red, 150);
   strokeWeight(2);
   line(160, 270, 534, 270);
 
   noStroke();
-  fill(70, 40, 20);
+  fill(...palette.textBrown);
   textFont(normalFont);
   textAlign(LEFT);
   textSize(26);
@@ -80,7 +80,7 @@ function drawSignDetails() {
   // hint
   textAlign(CENTER);
   textSize(20);
-  fill(150, 110, 70);
+  fill(...palette.hintBrown);
   text("click outside the sign to close", 347, 521);
   pop();
 }

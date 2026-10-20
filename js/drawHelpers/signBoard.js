@@ -1,4 +1,3 @@
-
 function drawSignRopes() {
   push();
   stroke(110, 80, 45);
@@ -18,7 +17,7 @@ function drawSignboard() {
   push();
 
   // outer frame
-  fill(110, 70, 35);
+  fill(...palette.brown);
   rect(80, 150, 620, 570);
 
   // inner board

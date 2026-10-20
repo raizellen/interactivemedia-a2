@@ -16,9 +16,9 @@ function mousePressed() {
   }
 
   // poster details open
-  if (posterOpen) {
-    if (!collidePointRect(mouseX, mouseY, posterPanel.x, posterPanel.y, posterPanel.w, posterPanel.h)) {
-      posterOpen = false;
+  if (namePosterOpen) {
+    if (!collidePointRect(mouseX, mouseY, namePosterPanel.x, namePosterPanel.y, namePosterPanel.w, namePosterPanel.h)) {
+      namePosterOpen = false;
     }
     return;
   }

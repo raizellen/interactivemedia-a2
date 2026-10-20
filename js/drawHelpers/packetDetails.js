@@ -24,9 +24,9 @@ function drawPacketDetails() {
   // paper card
   fill(0, 70);
   rect(108, 198, 608, 518); // shadow
-  stroke(200, 185, 150);
+  stroke(...palette.paperEdge);
   strokeWeight(2);
-  fill(250, 242, 215);
+  fill(...palette.paper);
   rect(100, 190, 600, 510);
 
   drawTape(150, 192, -0.35);
@@ -43,40 +43,40 @@ function drawPacketDetails() {
   // name
   textAlign(LEFT);
   noStroke();
-  fill(195, 47, 39);
+  fill(...palette.red);
   textFont(thickFont);
   textSize(30);
   text(packetNames[packet.type], 280, 240);
 
-  stroke(195, 47, 39, 150);
+  stroke(...palette.red, 150);
   strokeWeight(2);
   line(280, 254, 575, 254);
 
   // survey question
   noStroke();
-  fill(70, 40, 20);
+  fill(...palette.textBrown);
   textFont(normalFont);
   textSize(22);
   text(question.question, 280, 266, 575, 350);
 
   // answer
-  fill(150, 110, 70);
-  textSize(20);
+  fill(...palette.hintBrown);
+  textSize(24);
   text("your answer", 280, 375);
 
-  fill(219, 124, 38);
-  stroke(195, 47, 39);
+  fill(...palette.orange);
+  stroke(...palette.red);
   strokeWeight(4);
   textFont(thickFont);
   textSize(52);
-  var shown = value === undefined ? "-" : value + (question.unit || "");
+  var shown = value === undefined ? "-" : value + " " +(question.unit || "");
   text(shown, 280, 435);
 
   // hint
   textAlign(CENTER);
   textSize(18);
   noStroke();
-  fill(150, 110, 70);
+  fill(...palette.hintBrown);
   text("click outside to close", 350, 497);
   pop();
 }

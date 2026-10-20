@@ -1,4 +1,80 @@
-function drawHelp() {
+// the flip is an update
+function updateHelpPoster() {
+  if (helpFlipping) {
+    helpFlip += 0.08;
+
+    if (helpFlip >= PI / 2) {
+      helpFlip = 0;
+      helpFlipping = false;
+      helpOpen = true;
+    }
+  }
+}
+
+// the poster on the wall, flips over to the controls
+function drawHelpPoster() {
+  if (helpOpen) {
+    return;
+  }
+
+  push();
+  var x1 = helpPosterButton.x;
+  var y1 = helpPosterButton.y;
+  var x2 = x1 + helpPosterButton.w;
+  var y2 = y1 + helpPosterButton.h;
+  var centerX = x1 + helpPosterButton.w / 2;
+  var centerY = y1 + helpPosterButton.h / 2;
+
+  // hover enlarge (shared Button behaviour), then flip around the same centre
+  helpPosterButton.applyHover();
+  translate(centerX, centerY);
+  // flip horizontally
+  scale(cos(helpFlip), 1);
+  translate(-centerX, -centerY);
+
+  // front poster
+  noStroke();
+  fill(0, 100);
+  rect(x1 + 3, y1 + 3, x2 + 3, y2 + 3);
+
+  stroke(100, 30, 30);
+  fill(200, 100, 100);
+  rect(x1, y1, x2, y2);
+
+  noStroke();
+
+  fill(100, 120, 200);
+  quad(x2, y1, x2, y2, x1 + helpPosterButton.w * 0.27, y2, centerX + helpPosterButton.w * 0.17, y1);
+
+  fill(230);
+  rect(x1 + 1, y1 + 30, x1 + 40, y1 + 70);
+  rect(x1 + 60, y1 + 20, x1 + 130, y1 + 70, 4);
+
+  // R logo
+  stroke(150, 100, 100);
+  strokeWeight(2);
+  rect(x1 + 8, y1 + 40, x1 + 28, y1 + 50, 4);
+  fill(150, 100, 100);
+  rect(x1 + 8, y1 + 40, x1 + 13, y1 + 60);
+  line(x1 + 13, y1 + 60, x1 + 25, y1 + 60);
+  line(x1 + 34, y1 + 60, x1 + 34, y1 + 50);
+  line(x1 + 13, y1 + 50, x1 + 34, y1 + 60);
+
+  stroke(0);
+  fill(255);
+  textSize(15);
+  text("₱715", x1 + 130, y1 + 15);
+
+  fill(220, 180, 60);
+  text("TEXT 31080", centerX, y2 - 7);
+
+  fill(40, 70, 150);
+  textSize(25);
+  text("?HELP", centerX + 20, centerY + 5);
+  pop();
+}
+
+function drawHelpDetails() {
   push();
 
   // dim back

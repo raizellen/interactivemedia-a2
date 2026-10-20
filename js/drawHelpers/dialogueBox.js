@@ -62,27 +62,27 @@ function drawDialogueBox() {
   rect(b.x + 6, b.y + 7, b.x + b.w + 6, b.y + b.h + 7, 18);
 
   // box
-  stroke(110, 70, 35);
+  stroke(...palette.brown);
   strokeWeight(4);
-  fill(250, 242, 215);
+  fill(...palette.paper);
   rect(b.x, b.y, b.x + b.w, b.y + b.h, 18);
 
   // tail pointing up towards the window
   noStroke();
-  fill(250, 242, 215);
+  fill(...palette.paper);
   triangle(260, b.y + 2, 300, b.y + 2, 320, b.y - 24);
-  stroke(110, 70, 35);
+  stroke(...palette.brown);
   strokeWeight(4);
   line(260, b.y, 320, b.y - 24);
   line(300, b.y, 320, b.y - 24);
 
   // name tab
-  stroke(110, 25, 20);
+  stroke(...palette.darkRed);
   strokeWeight(3);
-  fill(195, 47, 39);
+  fill(...palette.red);
   rect(b.x + 24, b.y - 10, b.x + 150, b.y + 14, 8);
   noStroke();
-  fill(250, 235, 200);
+  fill(...palette.cream);
   textFont(thickFont);
   textSize(16);
   textAlign(CENTER, CENTER);
@@ -92,26 +92,26 @@ function drawDialogueBox() {
   textFont(normalFont);
   textSize(32);
   textAlign(LEFT, TOP);
-  fill(70, 40, 20);
+  fill(...palette.textBrown);
   text(dialogueText.substring(0, floor(charsShown)), b.x + 25, b.y + 20);
 
   if (typingDone() && dialogueTranslation !== "") {
     textSize(24);
-    fill(150, 110, 70);
+    fill(...palette.hintBrown);
     text("(" + dialogueTranslation + ")", b.x + 25, b.y + 50);
   }
 
   // show alert
   if (dialoguePhase === "asking" && inputNotice !== "") {
     textSize(24);
-    fill(195, 47, 39);
+    fill(...palette.red);
     text(inputNotice, b.x + 25, b.y + 50);
   }
 
   // bouncing arrow = click to carry on
   if (dialoguePhase === "talking" && typingDone() && !script[scriptIndex + 1]) {
     var bounce = sin(frameCount * 0.15) * 3;
-    fill(219, 124, 38);
+    fill(...palette.orange);
     triangle(
       b.x + b.w - 49, b.y + b.h - 36 + bounce,
       b.x + b.w - 31, b.y + b.h - 36 + bounce,
@@ -134,13 +134,13 @@ function drawSubmitButton() {
   push();
   submitButton.applyHover();
 
-  stroke(110, 70, 35);
+  stroke(...palette.brown);
   strokeWeight(3);
-  fill(219, 124, 38);
+  fill(...palette.orange);
   rect(x1, y1, x2, y2, 10);
 
   noStroke();
-  fill(250, 235, 200);
+  fill(...palette.cream);
   textFont(thickFont);
   textSize(18);
   textAlign(CENTER, CENTER);

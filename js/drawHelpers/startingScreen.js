@@ -57,19 +57,19 @@ function drawStartTitle() {
   push();
   textAlign(CENTER);
 
-  fill(219, 124, 38);
-  stroke(195, 47, 39);
+  fill(...palette.orange);
+  stroke(...palette.red);
   strokeWeight(6);
   textSize(64);
   text("SARI-SARI(LI)", 350, 270);
 
-  fill(250, 235, 200);
+  fill(...palette.cream);
   stroke(100, 50, 25);
   textSize(40);
   text("DATA SELF-PORTRAIT", 350, 332);
 
   // divider
-  stroke(110, 70, 35);
+  stroke(...palette.brown);
   strokeWeight(3);
   line(150, 372, 550, 372);
 
@@ -96,9 +96,9 @@ function drawStartButton() {
   rect(x1 + 4, y1 + 5, x2 + 4, y2 + 5, 14);
 
   // button
-  stroke(110, 25, 20);
+  stroke(...palette.darkRed);
   strokeWeight(4);
-  fill(195, 47, 39);
+  fill(...palette.red);
   rect(x1, y1, x2, y2, 14);
 
   // top highlight
@@ -106,8 +106,8 @@ function drawStartButton() {
   fill(255, 255, 255, 40);
   rect(x1 + 6, y1 + 6, x2 - 6, y1 + startButton.h / 2, 10);
 
-  fill(250, 235, 200);
-  stroke(110, 25, 20);
+  fill(...palette.cream);
+  stroke(...palette.darkRed);
   strokeWeight(5);
   textSize(36);
   textAlign(CENTER, CENTER);

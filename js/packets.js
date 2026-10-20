@@ -1,8 +1,7 @@
 class Packet {
-  constructor(type, startX, startY, colourMain, colourShadow, outline, dataKey) {
+  constructor(type, x, colourMain, colourShadow, outline, dataKey) {
     this.type = type;
-    this.startX = startX;
-    this.startY = startY;
+    this.x = x;
     this.colourMain = colourMain;
     this.colourShadow = colourShadow;
     this.outline = outline;
@@ -10,13 +9,13 @@ class Packet {
 
     // hover + click for the bottom packet
     this.button = new Button({
-      x: startX,
-      y: startY,
+      x: x,
+      y: packetTop,
       w: packetWidth,
       h: packetHeight,
       isActive: () =>
         !starting &&
-        !posterBack &&
+        !helpOpen &&
         !signOpen &&
         selectedPacket === null &&
         !conversationActive() &&
@@ -30,8 +29,8 @@ class Packet {
   packetCalculations(y) {
     var w = packetWidth;
     var h = packetHeight;
-    var x = this.startX;
-    var top = this.startY + y;
+    var x = this.x;
+    var top = packetTop + y;
 
     // only the bottom packet enlarges (1.1 when hovered, 1 otherwise)
     if (this.isBottom(y)) {
@@ -64,7 +63,7 @@ class Packet {
 
   // number of packets change with data, move the button onto the bottom packet every frame
   updateButton() {
-    this.button.y = this.startY + (this.numberOfPackets() - 1) * packetHeight;
+    this.button.y = packetTop + (this.numberOfPackets() - 1) * packetHeight;
   }
 
   drawBase(pd) {
@@ -236,14 +235,11 @@ class Packet {
   }
 }
 
-function createPackets(leftOffset, topOffset){
-  var middleGap = 235;
-
+function createPackets() {
   packets = [
     new Packet(
       "magicSarap",
-      15 + leftOffset,
-      topOffset,
+      65,
       color(250, 220, 10),
       color(250, 200, 20),
       color(230, 150, 20),
@@ -251,8 +247,7 @@ function createPackets(leftOffset, topOffset){
     ),
     new Packet(
       "milo",
-      75 + leftOffset,
-      topOffset,
+      125,
       color(100, 200, 70),
       color(80, 180, 50),
       color(70, 150, 30),
@@ -260,8 +255,7 @@ function createPackets(leftOffset, topOffset){
     ),
     new Packet(
       "tang",
-      130 + leftOffset,
-      topOffset,
+      180,
       color(230, 100, 130),
       color(200, 80, 80),
       color(180, 60, 60),
@@ -269,8 +263,7 @@ function createPackets(leftOffset, topOffset){
     ),
     new Packet(
       "surf",
-      205 + leftOffset + middleGap,
-      topOffset,
+      490,
       color(60, 100, 200),
       color(40, 80, 180),
       color(30, 70, 160),
@@ -278,8 +271,7 @@ function createPackets(leftOffset, topOffset){
     ),
     new Packet(
       "kopiko",
-      290 + leftOffset + middleGap,
-      topOffset,
+      575,
       color(230, 210, 170),
       color(200, 180, 130),
       color(180, 160, 110),
@@ -287,8 +279,7 @@ function createPackets(leftOffset, topOffset){
     ),
     new Packet(
       "ovaltine",
-      350 + leftOffset + middleGap,
-      topOffset,
+      635,
       color(230, 120, 30),
       color(200, 90, 0),
       color(180, 70, 0),

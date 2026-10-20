@@ -20,7 +20,7 @@ async function setup() {
   outsideBuffer = createGraphics(700, 700);
   drawInside(insideBuffer);
   drawOutside(outsideBuffer);
-  createPackets(50, 200);
+  createPackets(); // after the buttons so a packet is on top of a poster
 
   karaoke = await loadSound('assets/sounds/karaoke.mp3');
   kidsPlaying = await loadSound('assets/sounds/kids-playing.mp3');
@@ -39,23 +39,25 @@ function draw() {
 
   drawSign();
   drawShutter();
-  drawPoster();
+  drawNamePoster();
+  updateHelpPoster();
+  drawHelpPoster();
   drawPackets();
   drawLight();
 
   updateDialogue();
   drawDialogue();
 
-  if (posterBack) {
-    drawHelp();
+  if (helpOpen) {
+    drawHelpDetails();
   }
 
   if (signOpen) {
     drawSignDetails();
   }
 
-  if (posterOpen) {
-    drawPosterDetails();
+  if (namePosterOpen) {
+    drawNamePosterDetails();
   }
 
   if (selectedPacket) {
